@@ -1,8 +1,10 @@
 package com.example.pethfinder;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new BoardAdapter(this, boardList);
         mRecyclerView = findViewById(R.id.mRecyclerView);
         mAddBtn = findViewById(R.id.writingBtn);
-
         Runnable r = () -> {
             try {
                 boardList = boardDb.boardDao().getAll();

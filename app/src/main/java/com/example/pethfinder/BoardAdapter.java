@@ -1,10 +1,13 @@
 package com.example.pethfinder;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -50,9 +53,19 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             titleTv = itemView.findViewById(R.id.itemTitle);
             userNameTv = itemView.findViewById(R.id.itemUserName);
             dateTv = itemView.findViewById(R.id.itemDate);
-/*
-            textTv = itemView.findViewById(R.id.itemDate);
-*/
+            itemView.setClickable(true);
+            itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    Intent intent = new Intent(context, ViewActivity.class);
+                    intent.putExtra("id", boards.get(position).getId().toString());
+                    intent.putExtra("title", boards.get(position).getTitle());
+                    intent.putExtra("userName", boards.get(position).getUserName());
+                    intent.putExtra("text", boards.get(position).getText());
+                    intent.putExtra("date", boards.get(position).getDate());
+                    context.startActivity(intent);
+                }
+            });
         }
 
         public void bind(Board board) {
@@ -61,7 +74,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             userNameTv.setText(board.getUserName());
             dateTv.setText(board.getDate());
         }
+
+
     }
+
 }
 
 
