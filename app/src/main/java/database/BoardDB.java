@@ -12,7 +12,7 @@ import com.example.pethfinder.LocalDateTimeConverter;
 import dao.BoardDao;
 import dto.Board;
 
-@Database(entities = {Board.class}, version = 3)
+@Database(entities = {Board.class}, version = 1)
 @TypeConverters({LocalDateTimeConverter.class})
 public abstract class BoardDB extends RoomDatabase {
     public abstract BoardDao boardDao();

@@ -8,30 +8,30 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import database.BoardDB;
 import dto.Board;
 
 public class AddActivity extends AppCompatActivity {
     private BoardDB boardDb;
-    private LocalDateTime localDateTime;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
         boardDb = BoardDB.getInstance(this);
-
+        date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
         EditText addTitle = (EditText) findViewById(R.id.addTitle);
         EditText addUserName = (EditText) findViewById(R.id.addUserName);
         final Runnable addRunnable = () -> {
             Board newBoard = new Board();
             newBoard.setTitle(addTitle.getText().toString());
             newBoard.setUserName(addUserName.getText().toString());
-/* Date 불러오기 해결해야함
-            newBoard.setDate(ZonedDateTime.parse(LocalDateTime.now().toString()).toLocalDateTime());
-*/
+            newBoard.setDate(date);
             boardDb.boardDao().insert(newBoard);
         };
 

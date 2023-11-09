@@ -59,7 +59,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             idTv.setText(board.getId().toString());
             titleTv.setText(board.getTitle());
             userNameTv.setText(board.getUserName());
-            dateTv.setText(board.getDate().toString());
+            dateTv.setText(board.getDate());
         }
     }
 }

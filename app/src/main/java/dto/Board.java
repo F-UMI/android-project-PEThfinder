@@ -20,10 +20,10 @@ public class Board {
 
     @ColumnInfo(name = "text")
     private String text;
+    @ColumnInfo(name = "date")
+    private String date;
 
-    private LocalDateTime date;
-
-    public Board(Long id, String title, String userName, String text, LocalDateTime date) {
+    public Board(Long id, String title, String userName, String text, String date) {
         this.id = id;
         this.title = title;
         this.userName = userName;
@@ -67,11 +67,11 @@ public class Board {
         this.text = text;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
