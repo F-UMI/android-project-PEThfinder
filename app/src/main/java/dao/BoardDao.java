@@ -1,6 +1,7 @@
 package dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -19,6 +20,8 @@ public interface BoardDao {
 
     @Query("DELETE from Board")
     void deleteAll();
+    @Delete()
+    void delete(Board board);
 }
 
 

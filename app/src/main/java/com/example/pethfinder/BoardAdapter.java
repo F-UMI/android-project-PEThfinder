@@ -2,7 +2,6 @@ package com.example.pethfinder;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +15,11 @@ import dto.Board;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
     private Context context;
-    private List<Board> boards;
+    private List<Board> boardList;
 
-    public BoardAdapter(Context context, List<Board> boards) {
+    public BoardAdapter(Context context, List<Board> boardList) {
         this.context = context;
-        this.boards = boards;
+        this.boardList = boardList;
     }
 
     @Override
@@ -31,13 +30,22 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
 
     @Override
     public int getItemCount() {
-        return boards.size();
+        return boardList.size();
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        holder.bind(boards.get(position));
+        holder.bind(boardList.get(position));
     }
+
+/*
+    public void delete(int position) {
+        boardList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position,boardList.size());
+
+    }
+*/
 
     public class Holder extends RecyclerView.ViewHolder {
         private TextView idTv;
@@ -45,7 +53,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         private TextView userNameTv;
         private TextView textTv;
         private TextView dateTv;
-
+        private int position;
 
         public Holder(View itemView) {
             super(itemView);
@@ -55,17 +63,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             dateTv = itemView.findViewById(R.id.itemDate);
             itemView.setClickable(true);
             itemView.setOnClickListener(view -> {
-                int position = getAdapterPosition();
+                position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ViewActivity.class);
-                    intent.putExtra("id", boards.get(position).getId().toString());
-                    intent.putExtra("title", boards.get(position).getTitle());
-                    intent.putExtra("userName", boards.get(position).getUserName());
-                    intent.putExtra("text", boards.get(position).getText());
-                    intent.putExtra("date", boards.get(position).getDate());
+                    intent.putExtra("id", boardList.get(position).getId().toString());
+                    intent.putExtra("title", boardList.get(position).getTitle());
+                    intent.putExtra("userName", boardList.get(position).getUserName());
+                    intent.putExtra("text", boardList.get(position).getText());
+                    intent.putExtra("date", boardList.get(position).getDate());
                     context.startActivity(intent);
                 }
             });
+
         }
 
         public void bind(Board board) {
@@ -79,5 +88,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
     }
 
 }
+
 
 

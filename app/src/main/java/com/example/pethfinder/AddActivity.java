@@ -1,6 +1,7 @@
 package com.example.pethfinder;
 
 import android.content.Intent;
+import android.media.effect.Effect;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,12 +26,14 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.add_item);
         boardDb = BoardDB.getInstance(this);
         date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
-        EditText addTitle = (EditText) findViewById(R.id.addTitle);
-        EditText addUserName = (EditText) findViewById(R.id.addUserName);
+        EditText addTitle = findViewById(R.id.addTitle);
+        EditText addUserName = findViewById(R.id.addUserName);
+        EditText addText = findViewById(R.id.addText);
         final Runnable addRunnable = () -> {
             Board newBoard = new Board();
             newBoard.setTitle(addTitle.getText().toString());
             newBoard.setUserName(addUserName.getText().toString());
+            newBoard.setText(addText.getText().toString());
             newBoard.setDate(date);
             boardDb.boardDao().insert(newBoard);
         };
