@@ -23,7 +23,7 @@
                 android:textSize="20dp" />
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout2" android:layout_width="155dp" android:layout_height="54dp" android:layout_marginStart="256dp" android:layout_marginBottom="13dp" android:orientation="horizontal">
-            <Button android:id="@+id/backBtn" android:layout_width="80dp" android:layout_height="wrap_content" android:text="수정"/>
+            <Button android:id="@+id/updateBtn" android:layout_width="80dp" android:layout_height="wrap_content" android:text="수정"/>
 
             <Button android:id="@+id/deleteBtn" android:layout_width="80dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="삭제 "/>
         </LinearLayout>

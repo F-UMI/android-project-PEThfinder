@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -34,14 +35,13 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.more_info_board);
         boardDB = BoardDB.getInstance(this);
         boardList = boardDB.boardDao().getAll();
-//        Log.e("Alter", boardList.toString());
         boardAdapter = new BoardAdapter(this, boardList);
 
         viewTitle = findViewById(R.id.editTitle);
         viewUserName = findViewById(R.id.editUserName);
         viewDate = findViewById(R.id.viewDate);
         viewText = findViewById(R.id.editText);
-        backBtn = findViewById(R.id.backBtn);
+        updateBtn = findViewById(R.id.updateBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
 
         Intent intent = getIntent();
@@ -53,18 +53,18 @@ public class ViewActivity extends AppCompatActivity {
         boardId = Integer.parseInt(intent.getStringExtra("id"));
         position = intent.getIntExtra("position",0);
 
-        backBtn.setOnClickListener(e -> {
-            Intent i = new Intent(ViewActivity.this, MainActivity.class);
-            startActivity(i);
-            finish();
-        });
-
         updateBtn.setOnClickListener(e -> {
             Intent i = new Intent(ViewActivity.this, EditActivity.class);
+            i.putExtra("id", boardList.get(position).getId().toString());
+            i.putExtra("title", boardList.get(position).getTitle());
+            i.putExtra("userName", boardList.get(position).getUserName());
+            i.putExtra("text", boardList.get(position).getText());
+            i.putExtra("date", boardList.get(position).getDate());
+            i.putExtra("position", position);
+            Log.e("position", String.valueOf(position));
             startActivity(i);
             finish();
         });
-
 
         deleteBtn.setOnClickListener(e -> {
             boardList.remove(position);
@@ -77,6 +77,7 @@ public class ViewActivity extends AppCompatActivity {
             Log.e("Delete Complete", String.valueOf(boardList.size()));
             finish();
         });
+
 
     }
 }

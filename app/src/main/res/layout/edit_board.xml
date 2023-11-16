@@ -27,7 +27,7 @@
         android:background="#00ff0000"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/baseline_arrow_back_24" />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
         <EditText
             android:id="@+id/editBoardText"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="450dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
@@ -89,6 +89,12 @@
             android:ems="10"
             android:hint="내용을 입력하세요."
             android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/editBoardBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="수정하기" />
 
         <LinearLayout
             android:layout_width="wrap_content"
