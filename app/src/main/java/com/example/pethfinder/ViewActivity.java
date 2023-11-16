@@ -1,10 +1,8 @@
 package com.example.pethfinder;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -36,13 +34,13 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.more_info_board);
         boardDB = BoardDB.getInstance(this);
         boardList = boardDB.boardDao().getAll();
-        Log.e("Alter", boardList.toString());
+//        Log.e("Alter", boardList.toString());
         boardAdapter = new BoardAdapter(this, boardList);
 
-        viewTitle = findViewById(R.id.viewTitle);
-        viewUserName = findViewById(R.id.viewUserName);
+        viewTitle = findViewById(R.id.editTitle);
+        viewUserName = findViewById(R.id.editUserName);
         viewDate = findViewById(R.id.viewDate);
-        viewText = findViewById(R.id.viewText);
+        viewText = findViewById(R.id.editText);
         backBtn = findViewById(R.id.backBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
 
@@ -60,6 +58,13 @@ public class ViewActivity extends AppCompatActivity {
             startActivity(i);
             finish();
         });
+
+        updateBtn.setOnClickListener(e -> {
+            Intent i = new Intent(ViewActivity.this, EditActivity.class);
+            startActivity(i);
+            finish();
+        });
+
 
         deleteBtn.setOnClickListener(e -> {
             boardList.remove(position);
