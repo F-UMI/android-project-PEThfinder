@@ -51,7 +51,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         private TextView idTv;
         private TextView titleTv;
         private TextView userNameTv;
-        private TextView textTv;
         private TextView dateTv;
         private int position;
 

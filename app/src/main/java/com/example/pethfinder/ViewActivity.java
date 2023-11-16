@@ -1,7 +1,10 @@
 package com.example.pethfinder;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -28,12 +31,15 @@ public class ViewActivity extends AppCompatActivity {
 
     private BoardDB boardDB;
     private List<Board> boardList;
+    private BoardAdapter boardAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.more_info_board);
-        boardDB = Room.databaseBuilder(this, BoardDB.class, "board").allowMainThreadQueries().build();
+        boardDB = BoardDB.getInstance(this);
         boardList = boardDB.boardDao().getAll();
+        Log.e("Alter", boardList.toString());
+        boardAdapter = new BoardAdapter(this, boardList);
 
         viewTitle = findViewById(R.id.viewTitle);
         viewUserName = findViewById(R.id.viewUserName);
@@ -48,25 +54,25 @@ public class ViewActivity extends AppCompatActivity {
         viewTitle.setText(intent.getStringExtra("title"));
         viewText.setText(intent.getStringExtra("text"));
         viewDate.setText(intent.getStringExtra("date"));
-        position = intent.getIntExtra("position", 0);
+        position = intent.getIntExtra("position", 10);
 
-        backBtn.setOnClickListener(e ->{
+        backBtn.setOnClickListener(e -> {
             Intent i = new Intent(ViewActivity.this, MainActivity.class);
             startActivity(i);
             finish();
         });
 
         deleteBtn.setOnClickListener(e -> {
-/*            boardDB.boardDao().delete(boardList.get(position));
             boardList.remove(position);
-            notifyItemRangeChanged(position, items.size());*/
+            Log.e("position", String.valueOf(position));
+            boardDB.boardDao().delete(new Board(position));
+            boardAdapter.notifyDataSetChanged();
+            boardAdapter.notifyItemRangeChanged(position, boardList.size());
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
-
+            Log.e("Delete Complete", String.valueOf(boardList.size()));
             finish();
         });
 
-
     }
-
 }

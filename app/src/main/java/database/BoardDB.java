@@ -25,6 +25,7 @@ public abstract class BoardDB extends RoomDatabase {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                 BoardDB.class, "board.db")
                         .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
                         .build();
             }
         }

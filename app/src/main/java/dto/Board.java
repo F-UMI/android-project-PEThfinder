@@ -34,6 +34,13 @@ public class Board {
     public Board() {
         this(null, "", "", "", null);
     }
+    public Board(long id) {
+        this.id = id;
+        this.title = "";
+        this.userName = "";
+        this.text = "";
+        this.date = null;
+    }
 
     public Long getId() {
         return id;
