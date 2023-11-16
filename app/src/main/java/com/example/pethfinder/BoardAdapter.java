@@ -70,6 +70,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
                     intent.putExtra("userName", boardList.get(position).getUserName());
                     intent.putExtra("text", boardList.get(position).getText());
                     intent.putExtra("date", boardList.get(position).getDate());
+                    intent.putExtra("position", position);
                     context.startActivity(intent);
                 }
             });

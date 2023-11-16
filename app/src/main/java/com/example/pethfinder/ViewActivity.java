@@ -9,17 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import java.util.List;
 
-import dao.BoardDao;
 import database.BoardDB;
 import dto.Board;
 
 public class ViewActivity extends AppCompatActivity {
     private int position;
-    private TextView viewId;
+    private int boardId;
     private TextView viewUserName;
     private TextView viewTitle;
     private TextView viewDate;
@@ -54,7 +52,8 @@ public class ViewActivity extends AppCompatActivity {
         viewTitle.setText(intent.getStringExtra("title"));
         viewText.setText(intent.getStringExtra("text"));
         viewDate.setText(intent.getStringExtra("date"));
-        position = intent.getIntExtra("position", 10);
+        boardId = Integer.parseInt(intent.getStringExtra("id"));
+        position = intent.getIntExtra("position",0);
 
         backBtn.setOnClickListener(e -> {
             Intent i = new Intent(ViewActivity.this, MainActivity.class);
@@ -65,7 +64,7 @@ public class ViewActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(e -> {
             boardList.remove(position);
             Log.e("position", String.valueOf(position));
-            boardDB.boardDao().delete(new Board(position));
+            boardDB.boardDao().delete(new Board(boardId));
             boardAdapter.notifyDataSetChanged();
             boardAdapter.notifyItemRangeChanged(position, boardList.size());
             Intent i = new Intent(this, MainActivity.class);
