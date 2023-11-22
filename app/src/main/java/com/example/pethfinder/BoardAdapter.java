@@ -65,7 +65,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
                 position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ViewActivity.class);
-                    intent.putExtra("id", boardList.get(position).getId().toString());
+                    intent.putExtra("id", boardList.get(position).getId());
                     intent.putExtra("title", boardList.get(position).getTitle());
                     intent.putExtra("userName", boardList.get(position).getUserName());
                     intent.putExtra("text", boardList.get(position).getText());

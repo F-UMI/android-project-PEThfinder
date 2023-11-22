@@ -50,12 +50,12 @@ public class ViewActivity extends AppCompatActivity {
         viewTitle.setText(intent.getStringExtra("title"));
         viewText.setText(intent.getStringExtra("text"));
         viewDate.setText(intent.getStringExtra("date"));
-        boardId = Integer.parseInt(intent.getStringExtra("id"));
+        boardId = (int) intent.getLongExtra("id",0);
         position = intent.getIntExtra("position",0);
 
         updateBtn.setOnClickListener(e -> {
             Intent i = new Intent(ViewActivity.this, EditActivity.class);
-            i.putExtra("id", boardList.get(position).getId().toString());
+            i.putExtra("id", boardList.get(position).getId());
             i.putExtra("title", boardList.get(position).getTitle());
             i.putExtra("userName", boardList.get(position).getUserName());
             i.putExtra("text", boardList.get(position).getText());
@@ -77,7 +77,6 @@ public class ViewActivity extends AppCompatActivity {
             Log.e("Delete Complete", String.valueOf(boardList.size()));
             finish();
         });
-
-
+        Log.e("viewID", boardId + "");
     }
 }
