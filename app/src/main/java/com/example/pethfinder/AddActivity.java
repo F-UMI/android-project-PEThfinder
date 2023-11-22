@@ -20,19 +20,27 @@ public class AddActivity extends AppCompatActivity {
     private BoardDB boardDb;
     private String date;
 
+    private EditText addTitle;
+    private EditText addUserName;
+
+    private EditText addPassword;
+    private EditText addText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
         boardDb = BoardDB.getInstance(this);
         date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
-        EditText addTitle = findViewById(R.id.addTitle);
-        EditText addUserName = findViewById(R.id.addUserName);
-        EditText addText = findViewById(R.id.addText);
+        addTitle = findViewById(R.id.addTitle);
+        addUserName = findViewById(R.id.addUserName);
+        addPassword = findViewById(R.id.addPassword);
+        addText = findViewById(R.id.addText);
         final Runnable addRunnable = () -> {
             Board newBoard = new Board();
             newBoard.setTitle(addTitle.getText().toString());
             newBoard.setUserName(addUserName.getText().toString());
+            newBoard.setPassword(addPassword.getText().toString());
             newBoard.setText(addText.getText().toString());
             newBoard.setDate(date);
             boardDb.boardDao().insert(newBoard);

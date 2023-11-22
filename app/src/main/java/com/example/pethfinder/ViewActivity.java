@@ -3,11 +3,15 @@ package com.example.pethfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -50,33 +54,80 @@ public class ViewActivity extends AppCompatActivity {
         viewTitle.setText(intent.getStringExtra("title"));
         viewText.setText(intent.getStringExtra("text"));
         viewDate.setText(intent.getStringExtra("date"));
-        boardId = (int) intent.getLongExtra("id",0);
-        position = intent.getIntExtra("position",0);
+        boardId = (int) intent.getLongExtra("id", 0);
+        position = intent.getIntExtra("position", 0);
 
         updateBtn.setOnClickListener(e -> {
-            Intent i = new Intent(ViewActivity.this, EditActivity.class);
-            i.putExtra("id", boardList.get(position).getId());
-            i.putExtra("title", boardList.get(position).getTitle());
-            i.putExtra("userName", boardList.get(position).getUserName());
-            i.putExtra("text", boardList.get(position).getText());
-            i.putExtra("date", boardList.get(position).getDate());
-            i.putExtra("position", position);
-            Log.e("position", String.valueOf(position));
-            startActivity(i);
-            finish();
+            showPasswordInputDialog("update");
         });
 
         deleteBtn.setOnClickListener(e -> {
-            boardList.remove(position);
-            Log.e("position", String.valueOf(position));
-            boardDB.boardDao().delete(new Board(boardId));
-            boardAdapter.notifyDataSetChanged();
-            boardAdapter.notifyItemRangeChanged(position, boardList.size());
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-            Log.e("Delete Complete", String.valueOf(boardList.size()));
-            finish();
+            showPasswordInputDialog("delete");
         });
         Log.e("viewID", boardId + "");
+    }
+
+    private void showPasswordInputDialog(String query) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter Password");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.password_input_dialog, null);
+        builder.setView(dialogView);
+
+        final EditText passwordInput = dialogView.findViewById(R.id.passwordInput);
+
+        builder.setPositiveButton("Update", (dialog, which) -> {
+            // Check if the entered password is correct (you should replace "your_password" with the actual correct password)
+            String enteredPassword = passwordInput.getText().toString();
+            if (enteredPassword.equals(boardList.get(position).getPassword())) {
+                if (query.equals("update")) {
+                    boardUpdate();
+                } else {
+                    boardDelete();
+                }
+            } else {
+                showToast("잘못된 비밀번호");
+            }
+        });
+
+        builder.setNegativeButton("Cancel", (dialog, which) -> {
+            // User canceled the dialog
+            dialog.dismiss();
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void boardUpdate() {
+        Intent updateIntent = new Intent(ViewActivity.this, EditActivity.class);
+        updateIntent.putExtra("id", boardList.get(position).getId());
+        updateIntent.putExtra("title", boardList.get(position).getTitle());
+        updateIntent.putExtra("userName", boardList.get(position).getUserName());
+        updateIntent.putExtra("text", boardList.get(position).getText());
+        updateIntent.putExtra("date", boardList.get(position).getDate());
+        updateIntent.putExtra("position", position);
+        Log.e("position", String.valueOf(position));
+        startActivity(updateIntent);
+        showToast("비밀번호 인증 완료");
+        finish();
+    }
+
+    private void boardDelete() {
+        boardList.remove(position);
+        Log.e("position", String.valueOf(position));
+        boardDB.boardDao().delete(new Board(boardId));
+        boardAdapter.notifyDataSetChanged();
+        boardAdapter.notifyItemRangeChanged(position, boardList.size());
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        Log.e("Delete Complete", String.valueOf(boardList.size()));
+        showToast("삭제 완료");
+        finish();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

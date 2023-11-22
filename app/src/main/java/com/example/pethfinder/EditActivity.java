@@ -25,6 +25,8 @@ public class EditActivity extends AppCompatActivity {
 
     private EditText editBoardUserName;
     private EditText editBoardTitle;
+
+    private EditText editPassword;
     private EditText editText;
     private Button editBoardBtn;
 
@@ -40,6 +42,7 @@ public class EditActivity extends AppCompatActivity {
 
         editBoardTitle = findViewById(R.id.editBoardTitle);
         editBoardUserName = findViewById(R.id.editBoardUserId);
+        editPassword = findViewById(R.id.editPassword);
         editText = findViewById(R.id.editBoardText);
         editBoardBtn = findViewById(R.id.editBoardBtn);
 
@@ -47,6 +50,7 @@ public class EditActivity extends AppCompatActivity {
 
         editBoardTitle.setText(intent.getStringExtra("title"));
         editBoardUserName.setText(intent.getStringExtra("userName"));
+        editPassword.setText(intent.getStringExtra("password"));
         editText.setText(intent.getStringExtra("text"));
         position = intent.getIntExtra("position", 0);
 
@@ -56,8 +60,9 @@ public class EditActivity extends AppCompatActivity {
                 String title = editBoardTitle.getText().toString();
                 String userName = editBoardUserName.getText().toString();
                 String text = editText.getText().toString();
+                String password = editPassword.getText().toString();
                 String date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
-                Board editBoard = new Board(boardList.get(position).getId(), title, userName, text, date);
+                Board editBoard = new Board(boardList.get(position).getId(), password, title, userName, text, date);
                 Log.e("editID", boardList.get(position).getId().toString());
                 boardDB.boardDao().update(editBoard);
                 boardAdapter.notifyDataSetChanged();

@@ -12,6 +12,9 @@ public class Board {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
+    @ColumnInfo(name = "password")
+    private String password;
+
     @ColumnInfo(name = "title")
     private String title;
 
@@ -23,8 +26,9 @@ public class Board {
     @ColumnInfo(name = "date")
     private String date;
 
-    public Board(Long id, String title, String userName, String text, String date) {
+    public Board(Long id, String password, String title, String userName, String text, String date) {
         this.id = id;
+        this.password = password;
         this.title = title;
         this.userName = userName;
         this.text = text;
@@ -32,10 +36,12 @@ public class Board {
     }
 
     public Board() {
-        this(null, "", "", "", null);
+        this(null, "", "", "", "", null);
     }
+
     public Board(long id) {
         this.id = id;
+        this.password = "";
         this.title = "";
         this.userName = "";
         this.text = "";
@@ -48,6 +54,14 @@ public class Board {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTitle() {

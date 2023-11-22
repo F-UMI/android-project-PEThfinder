@@ -48,7 +48,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
 */
 
     public class Holder extends RecyclerView.ViewHolder {
-        private TextView idTv;
         private TextView titleTv;
         private TextView userNameTv;
         private TextView dateTv;
@@ -56,7 +55,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
 
         public Holder(View itemView) {
             super(itemView);
-            idTv = itemView.findViewById(R.id.itemID);
             titleTv = itemView.findViewById(R.id.itemTitle);
             userNameTv = itemView.findViewById(R.id.itemUserName);
             dateTv = itemView.findViewById(R.id.itemDate);
@@ -67,6 +65,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
                     Intent intent = new Intent(context, ViewActivity.class);
                     intent.putExtra("id", boardList.get(position).getId());
                     intent.putExtra("title", boardList.get(position).getTitle());
+                    intent.putExtra("password", boardList.get(position).getPassword());
                     intent.putExtra("userName", boardList.get(position).getUserName());
                     intent.putExtra("text", boardList.get(position).getText());
                     intent.putExtra("date", boardList.get(position).getDate());
@@ -78,7 +77,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         }
 
         public void bind(Board board) {
-            idTv.setText(board.getId().toString());
             titleTv.setText(board.getTitle());
             userNameTv.setText(board.getUserName());
             dateTv.setText(board.getDate());
