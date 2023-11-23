@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import dto.Board;
+import dto.BoardDto;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
     private Context context;
-    private List<Board> boardList;
+    private List<BoardDto> boardDtoList;
 
-    public BoardAdapter(Context context, List<Board> boardList) {
+    public BoardAdapter(Context context, List<BoardDto> boardDtoList) {
         this.context = context;
-        this.boardList = boardList;
+        this.boardDtoList = boardDtoList;
     }
 
     @Override
@@ -30,12 +30,12 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
 
     @Override
     public int getItemCount() {
-        return boardList.size();
+        return boardDtoList.size();
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        holder.bind(boardList.get(position));
+        holder.bind(boardDtoList.get(position));
     }
 
 /*
@@ -63,12 +63,13 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
                 position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ViewActivity.class);
-                    intent.putExtra("id", boardList.get(position).getId());
-                    intent.putExtra("title", boardList.get(position).getTitle());
-                    intent.putExtra("password", boardList.get(position).getPassword());
-                    intent.putExtra("userName", boardList.get(position).getUserName());
-                    intent.putExtra("text", boardList.get(position).getText());
-                    intent.putExtra("date", boardList.get(position).getDate());
+                    intent.putExtra("id", boardDtoList.get(position).getId());
+                    intent.putExtra("title", boardDtoList.get(position).getTitle());
+                    intent.putExtra("password", boardDtoList.get(position).getPassword());
+                    intent.putExtra("userName", boardDtoList.get(position).getUserName());
+                    intent.putExtra("text", boardDtoList.get(position).getText());
+                    intent.putExtra("date", boardDtoList.get(position).getDate());
+                    intent.putExtra("imagePath", boardDtoList.get(position).getImagePath());
                     intent.putExtra("position", position);
                     context.startActivity(intent);
                 }
@@ -76,10 +77,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
 
         }
 
-        public void bind(Board board) {
-            titleTv.setText(board.getTitle());
-            userNameTv.setText(board.getUserName());
-            dateTv.setText(board.getDate());
+        public void bind(BoardDto boardDto) {
+            titleTv.setText(boardDto.getTitle());
+            userNameTv.setText(boardDto.getUserName());
+            dateTv.setText(boardDto.getDate());
         }
 
 

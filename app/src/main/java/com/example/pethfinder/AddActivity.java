@@ -1,22 +1,28 @@
 package com.example.pethfinder;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.media.effect.Effect;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 import database.BoardDB;
-import dto.Board;
+import dto.BoardDto;
 
 public class AddActivity extends AppCompatActivity {
+    private static final int PICK_IMAGE_REQUEST = 1;
     private BoardDB boardDb;
     private String date;
 
@@ -25,6 +31,11 @@ public class AddActivity extends AppCompatActivity {
 
     private EditText addPassword;
     private EditText addText;
+    private ImageView addImage;
+    private Button btnGetImage;
+
+    private String imagePath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +47,23 @@ public class AddActivity extends AppCompatActivity {
         addUserName = findViewById(R.id.addUserName);
         addPassword = findViewById(R.id.addPassword);
         addText = findViewById(R.id.addText);
+        addImage = findViewById(R.id.addImage);
+
+        btnGetImage = findViewById(R.id.btnGetImage);
+        btnGetImage.setOnClickListener(v -> {
+            openGallery();
+        });
+
+
         final Runnable addRunnable = () -> {
-            Board newBoard = new Board();
-            newBoard.setTitle(addTitle.getText().toString());
-            newBoard.setUserName(addUserName.getText().toString());
-            newBoard.setPassword(addPassword.getText().toString());
-            newBoard.setText(addText.getText().toString());
-            newBoard.setDate(date);
-            boardDb.boardDao().insert(newBoard);
+            BoardDto newBoardDto = new BoardDto();
+            newBoardDto.setTitle(addTitle.getText().toString());
+            newBoardDto.setUserName(addUserName.getText().toString());
+            newBoardDto.setPassword(addPassword.getText().toString());
+            newBoardDto.setText(addText.getText().toString());
+            newBoardDto.setDate(date);
+            newBoardDto.setImagePath(imagePath);
+            boardDb.boardDao().insert(newBoardDto);
         };
 
         Button addBtn = findViewById(R.id.addBtn);
@@ -60,6 +80,32 @@ public class AddActivity extends AppCompatActivity {
     protected void onDestroy() {
         BoardDB.destroyInstance();
         super.onDestroy();
+    }
+
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            displaySelectedImage(selectedImageUri);
+            setImagePath(selectedImageUri);
+        }
+    }
+
+    private void displaySelectedImage(Uri uri) {
+        // Set the selected image to the ImageView
+        addImage.setImageURI(uri);
+    }
+
+    private void setImagePath(Uri selectedImageUri) {
+        this.imagePath = selectedImageUri.getPath();
+        Log.e("PATH", imagePath);
     }
 }
 

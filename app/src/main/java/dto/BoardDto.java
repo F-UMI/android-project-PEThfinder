@@ -1,14 +1,12 @@
 package dto;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 @Entity(tableName = "board")
-public class Board {
+public class BoardDto {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
@@ -26,26 +24,31 @@ public class Board {
     @ColumnInfo(name = "date")
     private String date;
 
-    public Board(Long id, String password, String title, String userName, String text, String date) {
+    @ColumnInfo(name = "image")
+    private String imagePath;
+
+    public BoardDto(Long id, String password, String title, String userName, String text, String date, String imagePath) {
         this.id = id;
         this.password = password;
         this.title = title;
         this.userName = userName;
         this.text = text;
         this.date = date;
+        this.imagePath = imagePath;
     }
 
-    public Board() {
-        this(null, "", "", "", "", null);
+    public BoardDto() {
+        this(null, "", "", "", "", null, "");
     }
 
-    public Board(long id) {
+    public BoardDto(long id) {
         this.id = id;
         this.password = "";
         this.title = "";
         this.userName = "";
         this.text = "";
         this.date = null;
+        this.imagePath = "";
     }
 
     public Long getId() {
@@ -94,6 +97,14 @@ public class Board {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(@NonNull String imagePath) {
+        this.imagePath = imagePath;
     }
 }
 

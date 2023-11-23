@@ -9,23 +9,23 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import dto.Board;
+import dto.BoardDto;
 
 @Dao
 public interface BoardDao {
-    @Query("SELECT * FROM Board")
-    List<Board> getAll();
+    @Query("SELECT * FROM board")
+    List<BoardDto> getAll();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Board board);
+    void insert(BoardDto boardDto);
 
     @Update
-    void update(Board board);
+    void update(BoardDto boardDto);
 
     @Delete()
-    void delete(Board board);
+    void delete(BoardDto boardDto);
 
-    @Query("DELETE from Board")
+    @Query("DELETE from board")
     void deleteAll();
 }
 

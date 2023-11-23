@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import database.BoardDB;
-import dto.Board;
+import dto.BoardDto;
 
 public class MainActivity extends AppCompatActivity {
     private BoardDB boardDb;
-    private List<Board> boardList;
+    private List<BoardDto> boardDtoList;
     private BoardAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private Button mAddBtn;
@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         boardDb = BoardDB.getInstance(this);
-        boardList = new ArrayList<>();
-        mAdapter = new BoardAdapter(this, boardList);
+        boardDtoList = new ArrayList<>();
+        mAdapter = new BoardAdapter(this, boardDtoList);
         mRecyclerView = findViewById(R.id.mRecyclerView);
         mAddBtn = findViewById(R.id.writingBtn);
         Runnable r = () -> {
             try {
-                boardList = boardDb.boardDao().getAll();
-                mAdapter = new BoardAdapter(MainActivity.this, boardList);
+                boardDtoList = boardDb.boardDao().getAll();
+                mAdapter = new BoardAdapter(MainActivity.this, boardDtoList);
                 mAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(mAdapter);
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));

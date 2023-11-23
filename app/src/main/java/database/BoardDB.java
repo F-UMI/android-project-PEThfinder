@@ -10,9 +10,9 @@ import android.content.Context;
 import com.example.pethfinder.LocalDateTimeConverter;
 
 import dao.BoardDao;
-import dto.Board;
+import dto.BoardDto;
 
-@Database(entities = {Board.class}, version = 1)
+@Database(entities = {BoardDto.class}, version = 1)
 @TypeConverters({LocalDateTimeConverter.class})
 public abstract class BoardDB extends RoomDatabase {
     public abstract BoardDao boardDao();

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/d"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,14 +10,14 @@
         android:id="@+id/addTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="211dp"
+        android:layout_marginBottom="1dp"
         android:autofillHints="Title"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addUserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addImage" />
 
     <EditText
         android:id="@+id/addUserName"
@@ -33,11 +34,10 @@
         android:id="@+id/addText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="271dp"
         android:autofillHints="Text"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintBottom_toTopOf="@+id/addPassword"
         app:layout_constraintStart_toStartOf="@+id/addUserName"
         app:layout_constraintTop_toBottomOf="@+id/addUserName" />
 
@@ -52,14 +52,40 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addText" />
+        app:layout_constraintTop_toBottomOf="@+id/btnGetImage" />
 
     <EditText
         android:id="@+id/addPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="93dp"
         android:ems="10"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btnGetImage"
         app:layout_constraintStart_toStartOf="@+id/addText"
         app:layout_constraintTop_toBottomOf="@+id/addText" />
+
+    <Button
+        android:id="@+id/btnGetImage"
+        android:layout_width="188dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="78dp"
+        android:text="Image"
+        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPassword" />
+
+    <ImageView
+        android:id="@+id/addImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/addTitle"
+        app:layout_constraintStart_toStartOf="@+id/addTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_launcher_background"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
