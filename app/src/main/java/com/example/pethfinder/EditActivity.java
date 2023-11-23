@@ -66,7 +66,7 @@ public class EditActivity extends AppCompatActivity {
                 String userName = editBoardUserName.getText().toString();
                 String text = editText.getText().toString();
                 String password = editPassword.getText().toString();
-                String imagePath = "";
+                byte[] imagePath = new byte[10];
                 String date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
                 BoardDto editBoardDto = new BoardDto(boardDtoList.get(position).getId(), password, title, userName, text, date, imagePath);
                 Log.e("editID", boardDtoList.get(position).getId().toString());

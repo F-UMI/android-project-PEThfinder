@@ -80,10 +80,15 @@
             android:text="TextView" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background" />
+            android:id="@+id/viewImage"
+            android:layout_width="match_parent"
+            android:layout_height="243dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_launcher_background"
+            />
 
         <TextView
             android:id="@+id/textView13"
@@ -127,17 +132,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/viewImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:background="#85B48F"
-        android:text="게시판"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="50dp"
-        android:textStyle="bold" />
 
 </FrameLayout>

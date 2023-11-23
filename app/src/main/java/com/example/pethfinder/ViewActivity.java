@@ -1,6 +1,8 @@
 package com.example.pethfinder;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
 import java.util.List;
 
 import database.BoardDB;
@@ -25,6 +29,7 @@ import dto.BoardDto;
 public class ViewActivity extends AppCompatActivity {
     private int position;
     private int boardId;
+    private byte[] imagePath;
     private TextView viewUserName;
     private TextView viewTitle;
     private TextView viewDate;
@@ -46,11 +51,12 @@ public class ViewActivity extends AppCompatActivity {
         boardDtoList = boardDB.boardDao().getAll();
         boardAdapter = new BoardAdapter(this, boardDtoList);
 
+
         viewTitle = findViewById(R.id.viewTitle);
         viewUserName = findViewById(R.id.viewUserName);
         viewDate = findViewById(R.id.viewDate);
         viewText = findViewById(R.id.viewText);
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.viewImage);
         updateBtn = findViewById(R.id.updateBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
 
@@ -60,10 +66,10 @@ public class ViewActivity extends AppCompatActivity {
         viewTitle.setText(intent.getStringExtra("title"));
         viewText.setText(intent.getStringExtra("text"));
         viewDate.setText(intent.getStringExtra("date"));
-        Picasso.with(this).load("file:///" + intent.getStringExtra("imagePath")).into(imageView);
-        Log.e("Path", intent.getStringExtra("imagePath"));
         boardId = (int) intent.getLongExtra("id", 0);
         position = intent.getIntExtra("position", 0);
+        imagePath = intent.getByteArrayExtra("imagePath");
+        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imagePath, 0, imagePath.length));
 
         updateBtn.setOnClickListener(e -> {
             showPasswordInputDialog("update");
@@ -98,12 +104,10 @@ public class ViewActivity extends AppCompatActivity {
                 showToast("잘못된 비밀번호");
             }
         });
-
         builder.setNegativeButton("Cancel", (dialog, which) -> {
             // User canceled the dialog
             dialog.dismiss();
         });
-
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -139,4 +143,6 @@ public class ViewActivity extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
 }
+
