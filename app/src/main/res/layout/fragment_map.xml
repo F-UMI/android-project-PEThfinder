@@ -15,31 +15,43 @@
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.google.android.gms.maps.MapFragment" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="128dp"
+            android:text="가게 불러오기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_currentLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="288dp"
+            android:layout_marginBottom="128dp"
+            android:text="현재 위치"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="주변 정보 확인"
+        android:textSize="50dp"
         android:background="#85B48F"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" >
-        <TextView
-            android:id="@+id/homeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주변 정보 확인"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="50dp"
-            android:layout_gravity="center"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
+        android:textColor="@color/black"
+        android:textAlignment="center"/>
 
 </FrameLayout>
