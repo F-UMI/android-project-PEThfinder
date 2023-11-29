@@ -49,11 +49,11 @@ public class ViewActivity extends AppCompatActivity {
         boardAdapter = new BoardAdapter(this, boardDtoList);
 
 
-        viewTitle = findViewById(R.id.viewTitle);
-        viewUserName = findViewById(R.id.viewUserName);
-        viewDate = findViewById(R.id.viewDate);
-        viewText = findViewById(R.id.viewText);
-        imageView = findViewById(R.id.viewImage);
+        viewTitle = findViewById(R.id.editBoardTitle);
+        viewUserName = findViewById(R.id.editBoardUserName);
+        viewDate = findViewById(R.id.editBoardPassword);
+        viewText = findViewById(R.id.editBoardText);
+        imageView = findViewById(R.id.editBoardImage);
         updateBtn = findViewById(R.id.updateBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
 
