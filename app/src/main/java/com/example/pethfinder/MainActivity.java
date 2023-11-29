@@ -2,63 +2,54 @@ package com.example.pethfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import database.BoardDB;
-import dto.BoardDto;
+import com.example.pethfinder.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private BoardDB boardDb;
-    private List<BoardDto> boardDtoList;
-    private BoardAdapter mAdapter;
-    private RecyclerView mRecyclerView;
-    private Button mAddBtn;
-
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        boardDb = BoardDB.getInstance(this);
-        boardDtoList = new ArrayList<>();
-        mAdapter = new BoardAdapter(this, boardDtoList);
-        mRecyclerView = findViewById(R.id.mRecyclerView);
-        mAddBtn = findViewById(R.id.writingBtn);
-        Runnable r = () -> {
-            try {
-                boardDtoList = boardDb.boardDao().getAll();
-                mAdapter = new BoardAdapter(MainActivity.this, boardDtoList);
-                mAdapter.notifyDataSetChanged();
-                mRecyclerView.setAdapter(mAdapter);
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                mRecyclerView.setHasFixedSize(true);
-            } catch (Exception e) {
-                Log.d("tag", "Error - " + e);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("FRAGMENT_TO_LOAD")) {
+            String fragmentToLoad = intent.getStringExtra("FRAGMENT_TO_LOAD");
+            if ("BoardFragment".equals(fragmentToLoad)) {
+                replaceFragment(new BoardFragment());
             }
-        };
-        Thread thread = new Thread(r);
-        thread.start();
+        } else {
+            // 기존 코드에서 기본적으로 Home 프래그먼트를 로드하는 부분
+            replaceFragment(new Home());
+        }
 
-        mAddBtn.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, AddActivity.class);
-            startActivity(i);
-            finish();
+        binding.bottomNavi.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                replaceFragment(new Home());
+            } else if (itemId == R.id.map) {
+                replaceFragment(new mapFragment());
+            } else if (itemId == R.id.note) {
+                // 직접 액티비티를 시작하는 코드로 변경
+               replaceFragment(new BoardFragment());
+            }
+
+            return true;
         });
+
     }
 
-    @Override
-    protected void onDestroy() {
-        BoardDB.destroyInstance();
-        boardDb = null;
-        super.onDestroy();
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
     }
+
+
 }
-
-

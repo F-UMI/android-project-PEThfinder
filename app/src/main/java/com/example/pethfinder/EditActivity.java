@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -74,7 +77,7 @@ public class EditActivity extends AppCompatActivity {
                 boardAdapter.notifyDataSetChanged();
             }).start();
 
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, BoardFragment.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.putExtra("id", boardDtoList.get(position).getId());
             i.putExtra("title", boardDtoList.get(position).getTitle());
@@ -85,6 +88,27 @@ public class EditActivity extends AppCompatActivity {
             this.startActivity(i);
         });
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
+                startActivity(intent);
+
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

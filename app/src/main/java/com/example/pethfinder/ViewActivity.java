@@ -1,12 +1,11 @@
 package com.example.pethfinder;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,13 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.squareup.picasso.Picasso;
-
-import java.io.ByteArrayInputStream;
-import java.util.Base64;
 import java.util.List;
 
 import database.BoardDB;
@@ -79,6 +76,27 @@ public class ViewActivity extends AppCompatActivity {
             showPasswordInputDialog("delete");
         });
         Log.e("viewID", boardId + "");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
+                startActivity(intent);
+
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void showPasswordInputDialog(String query) {
@@ -133,7 +151,7 @@ public class ViewActivity extends AppCompatActivity {
         boardDB.boardDao().delete(new BoardDto(boardId));
         boardAdapter.notifyDataSetChanged();
         boardAdapter.notifyItemRangeChanged(position, boardDtoList.size());
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, BoardFragment.class);
         startActivity(i);
         Log.e("Delete Complete", String.valueOf(boardDtoList.size()));
         showToast("삭제 완료");

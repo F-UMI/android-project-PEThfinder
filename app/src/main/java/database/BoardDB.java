@@ -1,18 +1,18 @@
 package database;
 
+import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-
-import android.content.Context;
 
 import com.example.pethfinder.LocalDateTimeConverter;
 
 import dao.BoardDao;
 import dto.BoardDto;
 
-@Database(entities = {BoardDto.class}, version = 2)
+@Database(entities = {BoardDto.class}, version = 1)
 @TypeConverters({LocalDateTimeConverter.class})
 public abstract class BoardDB extends RoomDatabase {
     public abstract BoardDao boardDao();
