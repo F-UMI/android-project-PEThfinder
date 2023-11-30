@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9EDC9">
+    android:background="#F9F7F7">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#85B48F"
+        android:background="#3F72AF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" >
 
@@ -111,9 +111,9 @@
             android:layout_gravity="center"
             android:layout_marginBottom="70dp"
             android:layout_weight="0"
-            android:text="첨부하기"
+            android:backgroundTint="#112D4E"
             android:fontFamily="@font/cafe_24_air"
-            />
+            android:text="첨부하기" />
 
         <Button
             android:id="@+id/updateBoardBtn"
@@ -121,9 +121,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0"
-            android:text="수정하기"
+            android:backgroundTint="#112D4E"
             android:fontFamily="@font/cafe_24_air"
-            />
+            android:text="수정하기" />
 
     </LinearLayout>
 

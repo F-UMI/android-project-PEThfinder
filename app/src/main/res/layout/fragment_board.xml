@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9EDC9"
+    android:background="#F9F7F7"
     tools:ignore="InvalidId">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#85B48F"
+        android:background="#3F72AF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" >
         <TextView
@@ -50,6 +50,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#112D4E"
         android:text="글쓰기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

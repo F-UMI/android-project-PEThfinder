@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9EDC9">
+    android:background="#F9F7F7">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#85B48F"
+        android:background="#3F72AF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" >
         <TextView
@@ -83,6 +83,7 @@
                 android:id="@+id/updateBtn"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#112D4E"
                 android:fontFamily="@font/cafe_24_air"
                 android:text="수정" />
 
@@ -91,6 +92,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="#112D4E"
                 android:fontFamily="@font/cafe_24_air"
                 android:text="삭제" />
         </LinearLayout>

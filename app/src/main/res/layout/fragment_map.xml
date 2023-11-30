@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9EDC9"
+    android:background="#F9F7F7"
     tools:context=".mapFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,10 +27,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="128dp"
+            android:backgroundTint="#112D4E"
             android:text="가게 불러오기"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button_currentLocation"
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="288dp"
             android:layout_marginBottom="128dp"
+            android:backgroundTint="#112D4E"
             android:text="현재 위치"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -49,11 +50,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="주변 정보 확인"
-        android:textSize="40dp"
+        android:background="#3F72AF"
         android:fontFamily="@font/cafe_24"
-        android:background="#85B48F"
+        android:text="주변 정보 확인"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textAlignment="center"/>
+        android:textSize="40dp" />
 
 </FrameLayout>
