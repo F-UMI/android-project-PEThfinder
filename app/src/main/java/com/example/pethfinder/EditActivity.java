@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,13 +69,16 @@ public class EditActivity extends AppCompatActivity {
         updateBoardBtn = findViewById(R.id.updateBoardBtn);
 
         Intent intent = getIntent();
-
         position = intent.getIntExtra("position", 0);
         editBoardTitle.setText(intent.getStringExtra("title"));
         editBoardUserName.setText(intent.getStringExtra("userName"));
         editBoardPassword.setText(intent.getStringExtra("password"));
         editBoardText.setText(intent.getStringExtra("text"));
-        editBoardImage.setImageBitmap(byteArrayToBitmap(boardDtoList.get(position).getImagePath()));
+        if (boardDtoList.get(position).getImagePath() != null) {
+            editBoardImage.setImageBitmap(byteArrayToBitmap(boardDtoList.get(position).getImagePath()));
+        } else {
+            editBoardImage.setVisibility(ImageView.GONE);
+        }
 
         imageEditBtn.setOnClickListener(e -> {
             openGallery();
@@ -159,6 +164,7 @@ public class EditActivity extends AppCompatActivity {
     private void displaySelectedImage(Bitmap imageBitmap) {
         // Set the selected image to the ImageView
         editBoardImage.setImageBitmap(imageBitmap);
+        editBoardImage.setVisibility(ImageView.VISIBLE);
     }
 
     private void setImagePath(Bitmap imageBitmap) {

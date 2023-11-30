@@ -2,6 +2,7 @@ package com.example.pethfinder;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,7 +67,12 @@ public class ViewActivity extends AppCompatActivity {
         boardId = (int) intent.getLongExtra("id", 0);
         position = intent.getIntExtra("position", 0);
         imagePath = intent.getByteArrayExtra("imagePath");
-        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imagePath, 0, imagePath.length));
+        if (imagePath != null) {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(imagePath, 0, imagePath.length));
+        } else {
+            imageView.setVisibility(ImageView.GONE);
+        }
+
 
         updateBtn.setOnClickListener(e -> {
             showPasswordInputDialog("update");
@@ -85,8 +91,8 @@ public class ViewActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+        switch (item.getItemId()) {
+            case android.R.id.home: { // 뒤로가기 버튼 눌렀을 때
 
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
