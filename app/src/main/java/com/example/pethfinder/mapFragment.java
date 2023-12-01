@@ -70,11 +70,7 @@ public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mapView.getMapAsync(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
-        Button showLocationButton = rootView.findViewById(R.id.button_currentLocation);
-        Button showDatabaseButton = rootView.findViewById(R.id.button_database);
 
-        showLocationButton.setOnClickListener(v -> getLastKnownLocation());
-        showDatabaseButton.setOnClickListener(v -> showDatabase(csvData));
         return rootView;
     }
 
@@ -114,6 +110,7 @@ public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
         getLastKnownLocation();
+        showDatabase(csvData);
     }
 
     public void changeImage(MarkerOptions markerOptions) {

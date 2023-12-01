@@ -8,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -22,7 +23,8 @@ public class CSVRead extends Fragment {
         loadData(mMap, csvData);
     }
 
-    private void loadData(GoogleMap mMap, List<String[]> allContent) {
+    private List<String> loadData(GoogleMap mMap, List<String[]> allContent) {
+        List<String> suwonMarkerData = new ArrayList<>();
         for (int i = 1; i < allContent.size(); i++) {
             String content[] = allContent.get(i);
             String fcltyNm = content[0];
@@ -34,12 +36,14 @@ public class CSVRead extends Fragment {
             markerOptions.position(currentLocation).title(fcltyNm);
             if (content[14].contains("수원시")) {
                 if (mMap != null) {
+                    suwonMarkerData.add(content[0]);
                     mMap.addMarker(markerOptions);
                 } else {
                     Log.e("CSVRead", "mMap is null");
                 }
             }
         }
+        return suwonMarkerData;
     }
 }
 
