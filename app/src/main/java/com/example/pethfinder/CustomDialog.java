@@ -28,7 +28,6 @@ public class CustomDialog extends Dialog {
     private TextView phoneNumberTextView;
     private TextView weekdayOpenTimeTextView;
     private TextView weekendOpenTimeTextView;
-    private Button shutdownClick;
 
 
     public CustomDialog(@NonNull Context context, String[] content,String marketId) {
@@ -50,7 +49,6 @@ public class CustomDialog extends Dialog {
         phoneNumberTextView = findViewById(R.id.textView_Number);
         weekdayOpenTimeTextView = findViewById(R.id.textView_WeekdayOpenTime);
         weekendOpenTimeTextView = findViewById(R.id.textView_WeekendOpenTime);
-        shutdownClick = findViewById(R.id.btn_shutdown);
 
         imageView.setOnClickListener(view -> showFullScreenImageDialog(imageView));
         imageView1.setOnClickListener(view -> showFullScreenImageDialog(imageView1));
@@ -64,7 +62,6 @@ public class CustomDialog extends Dialog {
         setImage(imageView,marketId,1);
         setImage(imageView1,marketId,2);
         setImage(imageView2,marketId,3);
-        shutdownClick.setOnClickListener(v -> dismiss());
     }
 
     private void setImage(ImageView imageView, String marketId,int i) {
