@@ -1,120 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/d"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F9F7F7">
+    <!-- TODO: Update blank fragment layout -->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#3F72AF"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:theme="?attr/actionBarTheme" >
         <TextView
             android:id="@+id/homeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="글쓰기"
             android:textColor="@color/black"
-            android:textSize="40dp"
+            android:textStyle="bold"
             android:fontFamily="@font/cafe_24"
-            android:textStyle="bold" />
+            android:textSize="50dp"
+
+            android:layout_gravity="center"
+            />
 
     </androidx.appcompat.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/addTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:autofillHints="Title"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addUserName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImage" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="73dp"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/addUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="UserName"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addText"
-        app:layout_constraintStart_toStartOf="@+id/addTitle"
-        app:layout_constraintTop_toBottomOf="@+id/addTitle" />
+            <EditText
+                android:id="@+id/addUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="User ID"/>
 
-    <EditText
-        android:id="@+id/addText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="Text"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPassword"
-        app:layout_constraintStart_toStartOf="@+id/addUserName"
-        app:layout_constraintTop_toBottomOf="@+id/addUserName" />
+            <EditText
+                android:id="@+id/addPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Password"/>
 
-    <Button
-        android:id="@+id/addBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="65dp"
-        android:backgroundTint="#112D4E"
-        android:fontFamily="@font/cafe_24_air"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGetImage" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/addPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="93dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnGetImage"
-        app:layout_constraintStart_toStartOf="@+id/addText"
-        app:layout_constraintTop_toBottomOf="@+id/addText" />
+        <EditText
+            android:id="@+id/addTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="제목을 입력하세요."
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnGetImage"
-        android:layout_width="188dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="78dp"
-        android:backgroundTint="#112D4E"
-        android:fontFamily="@font/cafe_24_air"
-        android:text="Image"
-        app:layout_constraintBottom_toTopOf="@+id/addBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPassword" />
+        <EditText
+            android:id="@+id/addText"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="내용을 입력하세요."
+            android:inputType="textMultiLine" />
 
-    <ImageView
-        android:id="@+id/addImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="41dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@+id/addTitle"
-        app:layout_constraintStart_toStartOf="@+id/addTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/addImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnGetImage"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:text="사진첨부"
+                android:backgroundTint="#112D4E"
+                android:fontFamily="@font/cafe_24_air"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="게시"
+                android:backgroundTint="#112D4E"
+                android:fontFamily="@font/cafe_24_air"
+                android:textSize="30dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
