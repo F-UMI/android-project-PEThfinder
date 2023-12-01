@@ -76,8 +76,8 @@ public class AddActivity extends AppCompatActivity {
         addBtn.setOnClickListener(v -> {
             Thread addThread = new Thread(addRunnable);
             addThread.start();
-            Intent i = new Intent(AddActivity.this, MainActivity.class);
-            i.putExtra("FRAGMENT_TO_ROAD", "BoardFragment");
+            Intent i = new Intent(this, MainActivity.class);
+            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
             startActivity(i);
             finish();
         });
