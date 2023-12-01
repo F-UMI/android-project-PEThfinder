@@ -157,7 +157,8 @@ public class ViewActivity extends AppCompatActivity {
         boardDB.boardDao().delete(new BoardDto(boardId));
         boardAdapter.notifyDataSetChanged();
         boardAdapter.notifyItemRangeChanged(position, boardDtoList.size());
-        Intent i = new Intent(this, BoardFragment.class);
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
         startActivity(i);
         Log.e("Delete Complete", String.valueOf(boardDtoList.size()));
         showToast("삭제 완료");

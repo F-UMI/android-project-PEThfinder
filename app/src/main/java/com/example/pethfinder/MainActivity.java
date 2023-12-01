@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,7 +31,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new Home());
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("FRAGMENT_TO_LOAD")) {
+            String fragmentToLoad = intent.getStringExtra("FRAGMENT_TO_LOAD");
+            if ("BoardFragment".equals(fragmentToLoad)) {
+                replaceFragment(new BoardFragment());
+            }
+        } else {
+            // 기존 코드에서 기본적으로 Home 프래그먼트를 로드하는 부분
+            replaceFragment(new Home());
+        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
