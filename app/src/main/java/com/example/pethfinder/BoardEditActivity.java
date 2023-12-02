@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,7 +29,7 @@ import java.util.List;
 import database.BoardDB;
 import dto.BoardDto;
 
-public class EditActivity extends AppCompatActivity {
+public class BoardEditActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     byte[] imagePath = new byte[0];

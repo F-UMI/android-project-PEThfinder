@@ -60,7 +60,7 @@ public class BoardFragment extends Fragment {
 
         mAddBtn.setOnClickListener(v -> {
             if (isAdded()) {
-                Intent i = new Intent(requireContext(), AddActivity.class);
+                Intent i = new Intent(requireContext(), BoardAddActivity.class);
                 startActivity(i);
                 requireActivity().finish();
             }

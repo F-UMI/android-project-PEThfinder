@@ -62,7 +62,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             itemView.setOnClickListener(view -> {
                 position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    Intent intent = new Intent(context, ViewActivity.class);
+                    Intent intent = new Intent(context, BoardViewActivity.class);
                     intent.putExtra("id", boardDtoList.get(position).getId());
                     intent.putExtra("title", boardDtoList.get(position).getTitle());
                     intent.putExtra("password", boardDtoList.get(position).getPassword());

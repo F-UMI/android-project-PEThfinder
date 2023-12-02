@@ -2,7 +2,6 @@ package com.example.pethfinder;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +23,7 @@ import java.util.List;
 import database.BoardDB;
 import dto.BoardDto;
 
-public class ViewActivity extends AppCompatActivity {
+public class BoardViewActivity extends AppCompatActivity {
     private int position;
     private int boardId;
     private byte[] imagePath;
@@ -44,7 +43,7 @@ public class ViewActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.more_info_board);
+        setContentView(R.layout.activity_info_board);
         boardDB = BoardDB.getInstance(this);
         boardDtoList = boardDB.boardDao().getAll();
         boardAdapter = new BoardAdapter(this, boardDtoList);
@@ -137,7 +136,7 @@ public class ViewActivity extends AppCompatActivity {
     }
 
     private void boardUpdate() {
-        Intent updateIntent = new Intent(ViewActivity.this, EditActivity.class);
+        Intent updateIntent = new Intent(BoardViewActivity.this, BoardEditActivity.class);
         updateIntent.putExtra("id", boardDtoList.get(position).getId());
         updateIntent.putExtra("title", boardDtoList.get(position).getTitle());
         updateIntent.putExtra("userName", boardDtoList.get(position).getUserName());

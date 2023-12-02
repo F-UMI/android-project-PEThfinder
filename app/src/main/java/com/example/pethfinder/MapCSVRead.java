@@ -18,8 +18,8 @@ import java.util.List;
  * 가게 주소 : content[14]
  * 전화번호 : content[16]
  */
-public class CSVRead extends Fragment {
-    public CSVRead(GoogleMap mMap, List<String[]> csvData) {
+public class MapCSVRead extends Fragment {
+    public MapCSVRead(GoogleMap mMap, List<String[]> csvData) {
         loadData(mMap, csvData);
     }
 

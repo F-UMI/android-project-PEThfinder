@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter;
 import database.BoardDB;
 import dto.BoardDto;
 
-public class AddActivity extends AppCompatActivity {
+public class BoardAddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private BoardDB boardDb;
     private String date;
@@ -46,7 +46,7 @@ public class AddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_item);
+        setContentView(R.layout.activity_add_board);
         boardDb = BoardDB.getInstance(this);
         date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
         addTitle = findViewById(R.id.addTitle);

@@ -9,17 +9,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.example.pethfinder.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             // 기존 코드에서 기본적으로 Home 프래그먼트를 로드하는 부분
-            replaceFragment(new Home());
+            replaceFragment(new HomeFragment());
         }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -53,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavi.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                replaceFragment(new Home());
+                replaceFragment(new HomeFragment());
             } else if (itemId == R.id.map) {
-                replaceFragment(new mapFragment());
+                replaceFragment(new MapFragment());
             } else if (itemId == R.id.note) {
                 replaceFragment(new BoardFragment());
             }

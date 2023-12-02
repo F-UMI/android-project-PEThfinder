@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,10 +38,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     View rootView;
     MapView mapView;
-    private CustomDialog customDialog;
+    private MapCustomDialog mapCustomDialog;
     private GoogleMap mMap;
     List<String[]> csvData;
     List<String> storeNames;
@@ -75,7 +74,7 @@ public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     }
 
     private void showDatabase(List<String[]> csvData) {
-        new CSVRead(mMap, csvData);
+        new MapCSVRead(mMap, csvData);
     }
 
     private void getLastKnownLocation() {
@@ -127,8 +126,8 @@ public class mapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 if (storeNames.size() > i) {
                     String storeName = storeNames.get(i);//
                     if (storeName.equals(marker.getTitle())) {
-                        customDialog = new CustomDialog(mapFragment.this.requireActivity(), content,marker.getId());
-                        customDialog.show();
+                        mapCustomDialog = new MapCustomDialog(MapFragment.this.requireActivity(), content,marker.getId());
+                        mapCustomDialog.show();
                         return true;
                     }
                 }

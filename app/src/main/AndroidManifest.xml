@@ -35,9 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"></activity>
-        <activity android:name=".ViewActivity"></activity>
-        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".BoardAddActivity"></activity>
+        <activity android:name=".BoardViewActivity"></activity>
+        <activity android:name=".BoardEditActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

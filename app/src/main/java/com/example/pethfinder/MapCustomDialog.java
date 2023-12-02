@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ import androidx.annotation.NonNull;
  * 전화번호 : content[16]
  */
 
-public class CustomDialog extends Dialog {
+public class MapCustomDialog extends Dialog {
     private TextView textView;
     private ImageView imageView;
     private ImageView imageView1;
@@ -30,7 +29,7 @@ public class CustomDialog extends Dialog {
     private TextView weekendOpenTimeTextView;
 
 
-    public CustomDialog(@NonNull Context context, String[] content,String marketId) {
+    public MapCustomDialog(@NonNull Context context, String[] content, String marketId) {
         super(context);
         setContentView(R.layout.popup_board);
 
