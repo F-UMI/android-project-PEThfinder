@@ -45,6 +45,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private GoogleMap mMap;
     List<String[]> csvData;
     List<String> storeNames;
+    List<String> storeLatitudes;
+    List<String> storeLongitudes;
     FusedLocationProviderClient fusedLocationClient;
 
     @Override
@@ -58,6 +60,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         try {
             csvData = loadData();
             storeNames = getStoreName(csvData);
+            storeLatitudes = getStoreLatitude(csvData);
+            storeLongitudes = getStoreLongitude(csvData);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (CsvException e) {
@@ -124,8 +128,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             for (int i = 0; i < csvData.size(); i++) {
                 String[] content = csvData.get(i);
                 if (storeNames.size() > i) {
-                    String storeName = storeNames.get(i);//
-                    if (storeName.equals(marker.getTitle())) {
+                    //String storeName = storeNames.get(i);
+                    //if (storeName.equals(marker.getTitle())) {
+                    String storeLatitude = storeLatitudes.get(i);
+                    String storeLongitude = storeLongitudes.get(i);
+                    if (storeLatitude.equals(String.valueOf(marker.getPosition().latitude))&&
+                            storeLongitude.equals(String.valueOf(marker.getPosition().longitude))) {
                         mapCustomDialog = new MapCustomDialog(MapFragment.this.requireActivity(), content,marker.getId());
                         mapCustomDialog.show();
                         return true;
@@ -183,6 +191,29 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         return storeNames;
     }
 
+    private List<String> getStoreLatitude(List<String[]> csvData) {
+        List<String> storeLatitudes = new ArrayList<>();
+        if (csvData != null && !csvData.isEmpty()) {
+            for (String[] rowData : csvData) {
+                if (rowData.length > 0) {
+                    storeLatitudes.add(rowData[11]);
+                }
+            }
+        }
+        return storeLatitudes;
+    }
+
+    private List<String> getStoreLongitude(List<String[]> csvData) {
+        List<String> storeLongitudes = new ArrayList<>();
+        if (csvData != null && !csvData.isEmpty()) {
+            for (String[] rowData : csvData) {
+                if (rowData.length > 0) {
+                    storeLongitudes.add(rowData[12]);
+                }
+            }
+        }
+        return storeLongitudes;
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

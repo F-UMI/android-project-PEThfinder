@@ -33,11 +33,16 @@ public class MapCustomDialog extends Dialog {
         super(context);
         setContentView(R.layout.popup_board);
 
-        String storeName = content[0];
-        String address = content[14];
-        String phoneNumber = content[16];
-        String weekdayOpenTime = content[17];
-        String weekendOpenTime = content[18];
+//        String storeName = content[0];
+//        String address = content[14];
+//        String phoneNumber = content[16];
+//        String weekdayOpenTime = content[17];
+//        String weekendOpenTime = content[18];
+        String storeName = getContent(content, 0);
+        String address = getContent(content, 14);
+        String phoneNumber = getContent(content, 16);
+        String weekdayOpenTime = getContent(content, 17);
+        String weekendOpenTime = getContent(content, 18);
 
         textView = findViewById(R.id.textView);
         imageView = findViewById(R.id.imageView_market);
@@ -53,6 +58,7 @@ public class MapCustomDialog extends Dialog {
         imageView1.setOnClickListener(view -> showFullScreenImageDialog(imageView1));
         imageView2.setOnClickListener(view -> showFullScreenImageDialog(imageView2));
         textView.setText(marketId);
+
         storeTextView.setText("\uD83C\uDFEC : " +storeName);
         addressTextView.setText("\uD83D\uDDFA ️: " + address);
         phoneNumberTextView.setText("☎️ : " + phoneNumber);
@@ -61,6 +67,14 @@ public class MapCustomDialog extends Dialog {
         setImage(imageView,marketId,1);
         setImage(imageView1,marketId,2);
         setImage(imageView2,marketId,3);
+    }
+
+    private String getContent(String[] content, int i) {
+        String value = "";
+        if(content[i].isEmpty()) {
+            value = "정보가 없습니다.";
+        } else value = content[i];
+        return value;
     }
 
     private void setImage(ImageView imageView, String marketId,int i) {
