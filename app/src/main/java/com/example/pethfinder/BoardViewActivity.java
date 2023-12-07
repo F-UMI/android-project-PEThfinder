@@ -1,5 +1,6 @@
 package com.example.pethfinder;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -71,6 +74,13 @@ public class BoardViewActivity extends AppCompatActivity {
         } else {
             imageView.setVisibility(ImageView.GONE);
         }
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupImage();
+            }
+        });
 
 
         updateBtn.setOnClickListener(e -> {
@@ -166,6 +176,36 @@ public class BoardViewActivity extends AppCompatActivity {
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showPopupImage() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_image);
+
+        // 다이얼로그 레이아웃에서 ImageView 찾기
+        ImageView fullScreenImageView = dialog.findViewById(R.id.fullScreenImageView);
+
+        // ImageView에 확대된 이미지 설정
+        if (imagePath != null) {
+            fullScreenImageView.setImageBitmap(BitmapFactory.decodeByteArray(imagePath, 0, imagePath.length));
+        }
+
+        // ImageView를 클릭하면 다이얼로그를 닫기 위한 onClickListener 설정
+        fullScreenImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        // 다이얼로그 크기 설정 및 표시
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        }
+
+        dialog.show();
     }
 
 }
