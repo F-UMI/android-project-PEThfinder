@@ -11,21 +11,21 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3F72AF"
+        android:background="#618264"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" >
+
         <TextView
             android:id="@+id/homeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="글쓰기"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:fontFamily="@font/cafe_24"
-            android:textSize="50dp"
-
             android:layout_gravity="center"
-            />
+            android:fontFamily="@font/cafe_24"
+            android:text="글쓰기"
+            android:textColor="#FAFCFA"
+            android:textSize="40dp"
+
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -44,21 +44,27 @@
                 android:id="@+id/addUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/textview_outline"
                 android:ems="10"
+                android:fontFamily="@font/cafe_24_air"
+                android:hint="User ID"
                 android:inputType="text"
-                android:hint="User ID"/>
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/addPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/textview_outline"
                 android:ems="10"
+                android:fontFamily="@font/cafe_24_air"
+                android:hint="Password"
                 android:inputType="textPassword"
-                android:hint="Password"/>
+                android:padding="10dp" />
 
         </LinearLayout>
 
@@ -71,24 +77,28 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/white"
+            android:background="@drawable/textview_outline"
             android:ems="10"
+            android:fontFamily="@font/cafe_24_air"
             android:hint="제목을 입력하세요."
-            android:inputType="text" />
+            android:inputType="text"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/addText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:layout_weight="6"
+            android:background="@drawable/textview_outline"
             android:ems="10"
+            android:fontFamily="@font/cafe_24_air"
             android:hint="내용을 입력하세요."
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:padding="10dp" />
 
         <ImageView
             android:id="@+id/addImage"
@@ -113,23 +123,25 @@
                 android:id="@+id/btnGetImage"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="20dp"
-                android:text="사진첨부"
-                android:backgroundTint="#112D4E"
+                android:layout_weight="1"
+                android:backgroundTint="#79AC78"
                 android:fontFamily="@font/cafe_24_air"
-                android:textSize="30dp"/>
+                android:text="사진첨부"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/addBtn"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
-                android:text="게시"
-                android:backgroundTint="#112D4E"
+                android:layout_weight="1"
+                android:backgroundTint="#79AC78"
                 android:fontFamily="@font/cafe_24_air"
-                android:textSize="30dp"/>
+                android:text="게시"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
