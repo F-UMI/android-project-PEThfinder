@@ -4,5 +4,8 @@
         <!-- Customize other theme attributes as needed -->
         <item name="android:fontFamily">@font/cafe_24_air</item>
     </style>
-
+    <!--splash 화면에 사용될 테마-->
+<!--    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/activity_splash</item>
+    </style>-->
 </resources>

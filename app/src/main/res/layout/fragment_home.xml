@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F7F7"
+    android:background="#618264"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,19 +15,29 @@
         android:layout_height="wrap_content"
         android:background="#618264"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" >
+        android:theme="?attr/actionBarTheme" />
 
-        <TextView
-            android:id="@+id/homeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/cafe_24"
-            android:text="펫스파인더"
-            android:textColor="#FAFCFA"
-            android:textSize="40dp"
-            android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="169dp"
+        android:layout_height="381dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="6dp"
+        android:paddingBottom="150dp"
+        android:src="@drawable/logo" />
 
-    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/homeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/cafe_24"
+        android:paddingTop="70dp"
+        android:text="펫스파인더"
+        android:textColor="#FAFCFA"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="6dp" />
 
 </FrameLayout>

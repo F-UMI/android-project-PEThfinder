@@ -20,21 +20,22 @@
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/start_logo"
+        android:label="펫스파인더"
+        android:roundIcon="@drawable/start_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PEThfinder"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".AppSplashActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" ></activity>
         <activity android:name=".BoardAddActivity"></activity>
         <activity android:name=".BoardViewActivity"></activity>
         <activity android:name=".BoardEditActivity"></activity>
