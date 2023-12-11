@@ -5,7 +5,9 @@
         <item name="android:fontFamily">@font/cafe_24_air</item>
     </style>
     <!--splash 화면에 사용될 테마-->
-<!--    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/activity_splash</item>
-    </style>-->
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#79AC78</item>
+        <item name="android:fontFamily">@font/cafe_24_air</item>
+        <item name="android:textColor">#FAFCFA</item>
+    </style>
 </resources>

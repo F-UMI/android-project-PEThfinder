@@ -115,16 +115,15 @@ public class BoardViewActivity extends AppCompatActivity {
     }
 
     private void showPasswordInputDialog(String query) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Enter Password");
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        builder.setTitle("비밀번호를 입력하세요");
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.password_input_dialog, null);
         builder.setView(dialogView);
 
         final EditText passwordInput = dialogView.findViewById(R.id.passwordInput);
 
-        builder.setPositiveButton("Update", (dialog, which) -> {
+        builder.setPositiveButton("인증", (dialog, which) -> {
             // Check if the entered password is correct (you should replace "your_password" with the actual correct password)
             String enteredPassword = passwordInput.getText().toString();
             if (enteredPassword.equals(boardDtoList.get(position).getPassword())) {
@@ -137,8 +136,8 @@ public class BoardViewActivity extends AppCompatActivity {
                 showToast("잘못된 비밀번호");
             }
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> {
-            // User canceled the dialog
+        builder.setNegativeButton("취소", (dialog, which) -> {
+
             dialog.dismiss();
         });
         AlertDialog dialog = builder.create();
@@ -169,7 +168,6 @@ public class BoardViewActivity extends AppCompatActivity {
         Intent i = new Intent(this, DeleteActivity.class);
         startActivity(i);
         Log.e("Delete Complete", String.valueOf(boardDtoList.size()));
-        showToast("삭제 완료");
         finish();
     }
 
