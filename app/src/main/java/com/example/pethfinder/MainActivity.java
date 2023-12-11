@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
             String fragmentToLoad = intent.getStringExtra("FRAGMENT_TO_LOAD");
             if ("BoardFragment".equals(fragmentToLoad)) {
                 replaceFragment(new BoardFragment());
+            } else if ("HomeFragment".equals(fragmentToLoad)) {
+                replaceFragment(new HomeFragment());
             }
         } else {
-            // 기존 코드에서 기본적으로 Home 프래그먼트를 로드하는 부분
             replaceFragment(new HomeFragment());
         }
 

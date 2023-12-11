@@ -95,8 +95,8 @@ public class BoardEditActivity extends AppCompatActivity {
                 boardAdapter.notifyDataSetChanged();
             }).start();
 
-            Intent i = new Intent(this, MainActivity.class);
-            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
+            Intent i = new Intent(this, LoadingCompletedActivity.class);
+/*            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");*/
             startActivity(i);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.putExtra("id", boardDtoList.get(position).getId());

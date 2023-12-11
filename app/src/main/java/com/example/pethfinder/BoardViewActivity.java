@@ -166,8 +166,7 @@ public class BoardViewActivity extends AppCompatActivity {
         boardDB.boardDao().delete(new BoardDto(boardId));
         boardAdapter.notifyDataSetChanged();
         boardAdapter.notifyItemRangeChanged(position, boardDtoList.size());
-        Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");
+        Intent i = new Intent(this, DeleteActivity.class);
         startActivity(i);
         Log.e("Delete Complete", String.valueOf(boardDtoList.size()));
         showToast("삭제 완료");
@@ -192,12 +191,7 @@ public class BoardViewActivity extends AppCompatActivity {
         }
 
         // ImageView를 클릭하면 다이얼로그를 닫기 위한 onClickListener 설정
-        fullScreenImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        fullScreenImageView.setOnClickListener(v -> dialog.dismiss());
 
         // 다이얼로그 크기 설정 및 표시
         Window window = dialog.getWindow();

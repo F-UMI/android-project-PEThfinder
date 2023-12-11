@@ -39,7 +39,8 @@
         <activity android:name=".BoardAddActivity"></activity>
         <activity android:name=".BoardViewActivity"></activity>
         <activity android:name=".BoardEditActivity"></activity>
-
+        <activity android:name=".LoadingCompletedActivity"></activity>
+        <activity android:name=".DeleteActivity"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_API_KEY}" />
