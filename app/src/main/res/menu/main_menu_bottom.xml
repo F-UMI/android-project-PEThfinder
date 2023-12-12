@@ -4,16 +4,17 @@
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/baseline_home_24"
-        android:title="Home" />
+        android:icon="@drawable/pet_home_icon"
+        android:title="홈" />
     <item
         android:id="@+id/map"
         android:enabled="true"
-        android:icon="@drawable/baseline_location_on_24"
-        android:title="Map" />
+        android:icon="@drawable/pet_with_map"
+        android:title="지도"
+        />
     <item
         android:id="@+id/note"
         android:enabled="true"
-        android:icon="@drawable/baseline_assignment_24"
-        android:title="Board" />
+        android:icon="@drawable/pet_board_icon"
+        android:title="게시판" />
 </menu>

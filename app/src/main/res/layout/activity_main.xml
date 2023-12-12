@@ -8,9 +8,12 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FAFCFA"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/navi_corner"
+        android:theme="@style/Widget.BottomNavigationView"
+        app:itemBackground="@color/white"
         app:itemIconTint="#618264"
         app:itemTextColor="#618264"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +22,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_frame"
         app:menu="@menu/main_menu_bottom"
-        tools:ignore="MissingConstraints,UnknownId" />
+        tools:ignore="MissingConstraints,UnknownId"
+        app:itemTextAppearanceActive="@color/white"
+
+        />
 
     <FrameLayout
         android:id="@+id/frame_layout"

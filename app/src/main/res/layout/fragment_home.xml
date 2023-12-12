@@ -9,6 +9,19 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:id="@+id/cente2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="300dp"
+        android:src="@drawable/logo" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
@@ -17,24 +30,14 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="381dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="230dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="300dp"
-        android:paddingBottom="150dp"
-        android:src="@drawable/logo" />
-
     <TextView
         android:id="@+id/homeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/cafe_24"
-        android:paddingTop="70dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="150dp"
         android:text="펫스파인더"
         android:textColor="#FAFCFA"
         android:textSize="40dp"

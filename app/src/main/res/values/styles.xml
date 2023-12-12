@@ -10,4 +10,11 @@
         <item name="android:fontFamily">@font/cafe_24_air</item>
         <item name="android:textColor">#FAFCFA</item>
     </style>
+
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/cafe_24</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
 </resources>
