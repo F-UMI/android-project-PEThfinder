@@ -9,11 +9,13 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="27dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="160dp"
         android:adjustViewBounds="true"
         app:lottie_autoPlay="true"
         app:lottie_fileName="completed.json"

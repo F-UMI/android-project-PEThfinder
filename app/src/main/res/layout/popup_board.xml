@@ -9,47 +9,101 @@
         android:id="@+id/constraintLayout"
         android:layout_width="350dp"
         android:layout_height="553dp"
-        android:background="#F9F7F7"
+        android:background="@drawable/dialog_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.28">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="160dp"
-            android:background="#618264"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textSize="15sp"
+        <!-- 이미지뷰에 scaleType 추가 -->
+
+
+        <ImageView
+            android:id="@+id/marker_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/textView_address"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.598"
+            app:srcCompat="@drawable/marker_logo" />
+
+        <ImageView
+            android:id="@+id/internet_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_internet"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.915"
+            app:srcCompat="@drawable/internet_logo" />
+
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_Number"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.712"
+            app:srcCompat="@drawable/phone_logo" />
+
+        <ImageView
+            android:id="@+id/clock_logo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_WeekdayOpenTime"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.761"
+            app:srcCompat="@drawable/clock_logo" />
+
+        <ImageView
+            android:id="@+id/pet_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_WeekendOpenTime"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.834"
+            app:srcCompat="@drawable/cat_and_dog_logo" />
+
+        <ImageView
+            android:id="@+id/imageView_market"
+            android:layout_width="160dp"
+            android:layout_height="230dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/image_corner"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/m5_image_1"
+            app:layout_constraintBottom_toTopOf="@+id/textView_storeName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <!-- 이미지뷰에 scaleType 추가 -->
-        <ImageView
-            android:id="@+id/imageView_market"
-            android:layout_width="175dp"
-            android:layout_height="234dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/m5_image_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
             android:id="@+id/imageView_market1"
-            android:layout_width="175dp"
-            android:layout_height="117dp"
+            android:layout_width="160dp"
+            android:layout_height="115dp"
             android:layout_marginStart="175dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/image_corner2"
+            android:clipToOutline="true"
             android:scaleType="centerCrop"
             android:src="@drawable/m5_image_2"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,25 +111,28 @@
 
         <ImageView
             android:id="@+id/imageView_market2"
-            android:layout_width="175dp"
-            android:layout_height="117dp"
+            android:layout_width="160dp"
+            android:layout_height="115dp"
             android:layout_marginStart="175dp"
-            android:layout_marginTop="137dp"
+            android:layout_marginTop="130dp"
+            android:background="@drawable/image_corner3"
+            android:clipToOutline="true"
             android:scaleType="centerCrop"
             android:src="@drawable/m5_image_3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
             android:id="@+id/textView_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginBottom="160dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
             android:text="주소"
-            android:textSize="18sp"
+            android:textColor="#79AC78"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -87,67 +144,102 @@
             android:id="@+id/textView_storeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="160dp"
-            android:fontFamily="@font/cafe_24_air"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="272dp"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/cafe_24"
             android:gravity="left"
             android:text="가게명"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="#79AC78"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/marker_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.707" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView_Number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginBottom="160dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
             android:text="전화번호"
-            android:textSize="18sp"
+            android:textColor="#79AC78"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.97" />
 
         <TextView
             android:id="@+id/textView_WeekdayOpenTime"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginBottom="80dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
             android:text="오픈 시간 (주중)"
-            android:textSize="18sp"
+            android:textColor="#79AC78"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.926" />
+            app:layout_constraintVertical_bias="0.898" />
 
         <TextView
             android:id="@+id/textView_WeekendOpenTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginBottom="50dp"
+            android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
             android:text="오픈 시간 (주말)"
-            android:textSize="18sp"
+            android:textColor="#79AC78"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.949"
-            android:fontFamily="@font/cafe_24_air" />
+            app:layout_constraintVertical_bias="0.923" />
+
+        <TextView
+            android:id="@+id/textView_internet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="45dp"
+            android:fontFamily="@font/cafe_24_air"
+            android:gravity="left"
+            android:text="오픈 시간 (주말)"
+            android:textColor="#79AC78"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,10 @@ package com.example.pethfinder;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,25 +62,25 @@ public class MapCustomDialog extends Dialog {
         imageView2.setOnClickListener(view -> showFullScreenImageDialog(imageView2));
         textView.setText(marketId);
 
-        storeTextView.setText("\uD83C\uDFEC : " +storeName);
-        addressTextView.setText("\uD83D\uDDFA ️: " + address);
-        phoneNumberTextView.setText("☎️ : " + phoneNumber);
-        weekdayOpenTimeTextView.setText("⏰ 주중 오픈 시간 : " + weekdayOpenTime);
-        weekendOpenTimeTextView.setText("⏰ 주말 오픈 시간 : " + weekendOpenTime);
-        setImage(imageView,marketId,1);
-        setImage(imageView1,marketId,2);
-        setImage(imageView2,marketId,3);
+        storeTextView.setText(storeName);
+        addressTextView.setText( address);
+        phoneNumberTextView.setText(phoneNumber);
+        weekdayOpenTimeTextView.setText(weekdayOpenTime);
+        weekendOpenTimeTextView.setText(weekendOpenTime);
+        setImage(imageView, marketId, 1);
+        setImage(imageView1, marketId, 2);
+        setImage(imageView2, marketId, 3);
     }
 
     private String getContent(String[] content, int i) {
         String value = "";
-        if(content[i].isEmpty()) {
+        if (content[i].isEmpty()) {
             value = "정보가 없습니다.";
         } else value = content[i];
         return value;
     }
 
-    private void setImage(ImageView imageView, String marketId,int i) {
+    private void setImage(ImageView imageView, String marketId, int i) {
         String imageName = marketId.toLowerCase() + "_image_" + i;
         int imageResourceId = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
 

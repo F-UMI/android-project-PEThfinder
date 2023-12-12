@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -123,6 +126,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     }
 
     GoogleMap.OnMarkerClickListener markerClickListener = new GoogleMap.OnMarkerClickListener() {
+
         @Override
         public boolean onMarkerClick(@NonNull Marker marker) {
             for (int i = 0; i < csvData.size(); i++) {
@@ -135,6 +139,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                     if (storeLatitude.equals(String.valueOf(marker.getPosition().latitude))&&
                             storeLongitude.equals(String.valueOf(marker.getPosition().longitude))) {
                         mapCustomDialog = new MapCustomDialog(MapFragment.this.requireActivity(), content,marker.getId());
+                        mapCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mapCustomDialog.show();
                         return true;
                     }

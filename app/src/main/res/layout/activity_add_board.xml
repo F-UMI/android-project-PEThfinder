@@ -51,7 +51,9 @@
                 android:fontFamily="@font/cafe_24_air"
                 android:hint="User ID"
                 android:inputType="text"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textColor="#191817"
+                android:textColorHint="#191817" />
 
             <EditText
                 android:id="@+id/addPassword"
@@ -64,7 +66,9 @@
                 android:fontFamily="@font/cafe_24_air"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textColor="#191817"
+                android:textColorHint="#191817" />
 
         </LinearLayout>
 
@@ -82,7 +86,9 @@
             android:fontFamily="@font/cafe_24_air"
             android:hint="제목을 입력하세요."
             android:inputType="text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="#191817"
+            android:textColorHint="#191817" />
 
         <EditText
             android:id="@+id/addText"
@@ -98,7 +104,9 @@
             android:fontFamily="@font/cafe_24_air"
             android:hint="내용을 입력하세요."
             android:inputType="textMultiLine"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="#191817"
+            android:textColorHint="#191817" />
 
         <ImageView
             android:id="@+id/addImage"
@@ -108,7 +116,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/transparency"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout

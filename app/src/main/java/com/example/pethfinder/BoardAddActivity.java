@@ -54,7 +54,6 @@ public class BoardAddActivity extends AppCompatActivity {
         addPassword = findViewById(R.id.addPassword);
         addText = findViewById(R.id.addText);
         addImage = findViewById(R.id.addImage);
-
         btnGetImage = findViewById(R.id.btnGetImage);
         btnGetImage.setOnClickListener(v -> {
             openGallery();

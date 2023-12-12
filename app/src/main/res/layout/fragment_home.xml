@@ -19,10 +19,12 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="169dp"
+        android:layout_width="200dp"
         android:layout_height="381dp"
         android:layout_gravity="center"
+        android:layout_marginTop="230dp"
         android:layout_marginRight="6dp"
+        android:layout_marginBottom="300dp"
         android:paddingBottom="150dp"
         android:src="@drawable/logo" />
 
