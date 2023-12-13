@@ -27,6 +27,9 @@ public interface BoardDao {
 
     @Query("DELETE from board")
     void deleteAll();
+
+    @Query("SELECT * FROM board WHERE classification = :desiredClassification")
+    List<BoardDto> searchByClassification(String desiredClassification);
 }
 
 

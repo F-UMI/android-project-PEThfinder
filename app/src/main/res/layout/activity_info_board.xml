@@ -47,7 +47,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:background="#E2F0E4"
-                android:fontFamily="@font/cafe_24_air"
+                android:fontFamily="@font/cafe_24"
                 android:gravity="center"
                 android:text="우리집 댕댕이를 보세요오~!"
                 android:textAlignment="center"

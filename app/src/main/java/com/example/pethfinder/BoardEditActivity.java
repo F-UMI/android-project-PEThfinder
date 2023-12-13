@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -32,10 +36,12 @@ import dto.BoardDto;
 public class BoardEditActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    byte[] imagePath = new byte[0];
+    byte[] imagePath;
     private BoardDB boardDB;
     private List<BoardDto> boardDtoList;
     private BoardAdapter boardAdapter;
+
+    private BoardDto editBoardDto;
 
     private EditText editBoardUserName;
     private EditText editBoardTitle;
@@ -45,9 +51,11 @@ public class BoardEditActivity extends AppCompatActivity {
     private ImageView editBoardImage;
     private Button imageEditBtn;
     private Button updateBoardBtn;
-
-
     private int position;
+    private Spinner class_Spinner;
+    private String[] classification;
+    private String selectedClassification;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +81,40 @@ public class BoardEditActivity extends AppCompatActivity {
         editBoardPassword.setText(intent.getStringExtra("password"));
         editBoardText.setText(intent.getStringExtra("text"));
         if (boardDtoList.get(position).getImagePath() != null) {
-            editBoardImage.setImageBitmap(byteArrayToBitmap(boardDtoList.get(position).getImagePath()));
+            editBoardImage.setImageBitmap(byteArrayToBitmap(intent.getByteArrayExtra("imagePath")));
         } else {
             editBoardImage.setVisibility(ImageView.GONE);
         }
 
+        class_Spinner = findViewById(R.id.edit_class_spinner);
+        classification = new String[]{"정보", "리뷰"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_list, classification);
+        adapter.setDropDownViewResource(R.layout.spinner_list);
+        class_Spinner.setAdapter(adapter);
+
+        // 스피너에서 선택 했을 경우 이벤트 처리
+        class_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedClassification = class_Spinner.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         imageEditBtn.setOnClickListener(e -> {
             openGallery();
         });
+
+        Bitmap specificPhotoBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.transparency);
+
+        // Get the Bitmap from the ImageView
+        editBoardImage.setDrawingCacheEnabled(true);
+        editBoardImage.buildDrawingCache();
+        Bitmap imageViewBitmap = editBoardImage.getDrawingCache();
 
         updateBoardBtn.setOnClickListener(e -> {
             new Thread(() -> {
@@ -89,14 +123,18 @@ public class BoardEditActivity extends AppCompatActivity {
                 String text = editBoardText.getText().toString();
                 String password = editBoardPassword.getText().toString();
                 String date = String.valueOf(LocalDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("MM월 dd일 HH시 mm분")));
-                BoardDto editBoardDto = new BoardDto(boardDtoList.get(position).getId(), password, title, userName, text, date, imagePath);
+                if (bitmapEquals(imageViewBitmap, specificPhotoBitmap)) {
+                    editBoardDto = new BoardDto(boardDtoList.get(position).getId(), password, title, userName, text, date, intent.getByteArrayExtra("imagePath"), selectedClassification);
+                } else {
+                    editBoardDto = new BoardDto(boardDtoList.get(position).getId(), password, title, userName, text, date, imagePath, selectedClassification);
+                }
                 Log.e("editID", boardDtoList.get(position).getId().toString());
                 boardDB.boardDao().update(editBoardDto);
                 boardAdapter.notifyDataSetChanged();
             }).start();
 
             Intent i = new Intent(this, LoadingCompletedActivity.class);
-/*            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");*/
+            /*            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");*/
             startActivity(i);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.putExtra("id", boardDtoList.get(position).getId());
@@ -179,4 +217,24 @@ public class BoardEditActivity extends AppCompatActivity {
         return bitmap;
     }
 
+    private boolean bitmapEquals(Bitmap bitmap1, Bitmap bitmap2) {
+        if (bitmap1 == null || bitmap2 == null) {
+            return false;
+        }
+
+        if (bitmap1.getWidth() != bitmap2.getWidth() || bitmap1.getHeight() != bitmap2.getHeight()) {
+            return false;
+        }
+
+        for (int x = 0; x < bitmap1.getWidth(); x++) {
+            for (int y = 0; y < bitmap1.getHeight(); y++) {
+                if (bitmap1.getPixel(x, y) != bitmap2.getPixel(x, y)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
+

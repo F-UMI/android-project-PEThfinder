@@ -8,9 +8,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -40,8 +44,13 @@ public class BoardAddActivity extends AppCompatActivity {
     private ImageView addImage;
     private Button btnGetImage;
 
+    private Spinner class_Spinner;
+
     private byte[] imagePath;
 
+    private String[] classification;
+
+    private String selectedClassification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,25 @@ public class BoardAddActivity extends AppCompatActivity {
         addText = findViewById(R.id.addText);
         addImage = findViewById(R.id.addImage);
         btnGetImage = findViewById(R.id.btnGetImage);
+        class_Spinner = findViewById(R.id.edit_class_spinner);
+        classification = new String[]{"정보", "리뷰"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_list, classification);
+        adapter.setDropDownViewResource(R.layout.spinner_list);
+        class_Spinner.setAdapter(adapter);
+
+        // 스피너에서 선택 했을 경우 이벤트 처리
+        class_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedClassification = class_Spinner.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         btnGetImage.setOnClickListener(v -> {
             openGallery();
         });
@@ -68,6 +96,7 @@ public class BoardAddActivity extends AppCompatActivity {
             newBoardDto.setText(addText.getText().toString());
             newBoardDto.setDate(date);
             newBoardDto.setImagePath(imagePath);
+            newBoardDto.setClassification(selectedClassification);
             boardDb.boardDao().insert(newBoardDto);
         };
 
@@ -89,8 +118,8 @@ public class BoardAddActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+        switch (item.getItemId()) {
+            case android.R.id.home: { // 뒤로가기 버튼 눌렀을 때
 
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");

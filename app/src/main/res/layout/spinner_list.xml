@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fontFamily="@font/cafe_24_air"
+    android:paddingLeft="13dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:textColor="#FAFCFA"
+    android:textSize="15dp" />

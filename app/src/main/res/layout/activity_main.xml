@@ -15,6 +15,7 @@
         android:theme="@style/Widget.BottomNavigationView"
         app:itemBackground="@color/white"
         app:itemIconTint="#618264"
+        app:itemTextAppearanceActive="@color/white"
         app:itemTextColor="#618264"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +24,6 @@
         app:layout_constraintTop_toBottomOf="@+id/main_frame"
         app:menu="@menu/main_menu_bottom"
         tools:ignore="MissingConstraints,UnknownId"
-        app:itemTextAppearanceActive="@color/white"
 
         />
 

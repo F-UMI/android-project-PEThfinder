@@ -27,7 +27,9 @@ public class BoardDto {
     @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB)
     private byte[] imagePath;
 
-    public BoardDto(Long id, String password, String title, String userName, String text, String date, byte[] imagePath) {
+    private String classification;
+
+    public BoardDto(Long id, String password, String title, String userName, String text, String date, byte[] imagePath, String classification) {
         this.id = id;
         this.password = password;
         this.title = title;
@@ -35,10 +37,11 @@ public class BoardDto {
         this.text = text;
         this.date = date;
         this.imagePath = imagePath;
+        this.classification = classification;
     }
 
     public BoardDto() {
-        this(null, "", "", "", "", null, null);
+        this(null, "", "", "", "", null, null, null);
     }
 
     public BoardDto(long id) {
@@ -49,6 +52,7 @@ public class BoardDto {
         this.text = "";
         this.date = null;
         this.imagePath = null;
+        this.classification = null;
     }
 
     public Long getId() {
@@ -105,6 +109,14 @@ public class BoardDto {
 
     public void setImagePath(byte[] imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
     }
 }
 

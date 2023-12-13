@@ -2,6 +2,7 @@ package com.example.pethfinder;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -71,18 +72,27 @@ public class BoardViewActivity extends AppCompatActivity {
         boardId = (int) intent.getLongExtra("id", 0);
         position = intent.getIntExtra("position", 0);
         imagePath = intent.getByteArrayExtra("imagePath");
+
+
         if (imagePath != null) {
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(imagePath, 0, imagePath.length));
         } else {
             imageView.setVisibility(ImageView.GONE);
         }
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupImage();
-            }
-        });
+        Bitmap specificPhotoBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.transparency);
+
+        // Get the Bitmap from the ImageView
+        imageView.setDrawingCacheEnabled(true);
+        imageView.buildDrawingCache();
+        Bitmap imageViewBitmap = imageView.getDrawingCache();
+
+        if (bitmapEquals(imageViewBitmap, specificPhotoBitmap)) {
+            imageView.setVisibility(ImageView.GONE);
+        }
+
+
+        imageView.setOnClickListener(v -> showPopupImage());
 
 
         updateBtn.setOnClickListener(e -> {
@@ -204,5 +214,25 @@ public class BoardViewActivity extends AppCompatActivity {
         dialog.show();
     }
 
+
+    private boolean bitmapEquals(Bitmap bitmap1, Bitmap bitmap2) {
+        if (bitmap1 == null || bitmap2 == null) {
+            return false;
+        }
+
+        if (bitmap1.getWidth() != bitmap2.getWidth() || bitmap1.getHeight() != bitmap2.getHeight()) {
+            return false;
+        }
+
+        for (int x = 0; x < bitmap1.getWidth(); x++) {
+            for (int y = 0; y < bitmap1.getHeight(); y++) {
+                if (bitmap1.getPixel(x, y) != bitmap2.getPixel(x, y)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
 

@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +31,9 @@ public class BoardFragment extends Fragment {
     private BoardAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private Button mAddBtn;
+    private Spinner search_class;
+    private String[] classification;
+    private String selectedClassification;
 
     @Nullable
     @Override
@@ -40,7 +46,7 @@ public class BoardFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.mRecyclerView);
         mAddBtn = view.findViewById(R.id.writingBtn);
 
-        Runnable r = () -> {
+            Runnable r = () -> {
             try {
                 boardList = boardDb.boardDao().getAll();
                 mAdapter = new BoardAdapter(requireContext(), boardList);

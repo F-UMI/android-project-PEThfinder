@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#618264"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" >
+        android:theme="?attr/actionBarTheme">
 
         <TextView
             android:id="@+id/homeTitle"
@@ -40,37 +40,50 @@
             android:layout_marginTop="73dp"
             android:orientation="horizontal">
 
+            <Spinner
+                android:id="@+id/edit_class_spinner"
+                android:layout_width="55dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/spineer_corner"
+                android:theme="@style/SpinnerTheme" />
+
             <EditText
                 android:id="@+id/addUserName"
-                android:layout_width="100dp"
+                android:layout_width="72dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/textview_outline"
                 android:ems="10"
                 android:fontFamily="@font/cafe_24_air"
+                android:foregroundGravity="center"
                 android:hint="User ID"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColor="#191817"
-                android:textColorHint="#191817" />
+                android:textColorHint="#777777" />
 
             <EditText
                 android:id="@+id/addPassword"
-                android:layout_width="200dp"
+                android:layout_width="69dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
                 android:background="@drawable/textview_outline"
                 android:ems="10"
                 android:fontFamily="@font/cafe_24_air"
+                android:foregroundGravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="#191817"
-                android:textColorHint="#191817" />
+                android:textColorHint="#777777" />
 
         </LinearLayout>
 
@@ -86,11 +99,11 @@
             android:background="@drawable/textview_outline"
             android:ems="10"
             android:fontFamily="@font/cafe_24_air"
-            android:hint="제목을 입력하세요."
+            android:hint="제목을 입력하세요"
             android:inputType="text"
             android:padding="10dp"
             android:textColor="#191817"
-            android:textColorHint="#191817" />
+            android:textColorHint="#777777" />
 
         <EditText
             android:id="@+id/addText"
@@ -104,18 +117,18 @@
             android:background="@drawable/textview_outline"
             android:ems="10"
             android:fontFamily="@font/cafe_24_air"
-            android:hint="내용을 입력하세요."
+            android:hint="내용을 입력하세요"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:textColor="#191817"
-            android:textColorHint="#191817" />
+            android:textColorHint="#777777" />
 
         <ImageView
             android:id="@+id/addImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/transparency"
@@ -124,9 +137,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button

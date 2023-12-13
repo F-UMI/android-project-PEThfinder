@@ -40,21 +40,32 @@
             android:layout_marginTop="73dp"
             android:orientation="horizontal">
 
+
+            <Spinner
+                android:id="@+id/edit_class_spinner"
+                android:layout_width="55dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/spineer_corner"
+                android:theme="@style/SpinnerTheme" />
+
             <EditText
                 android:id="@+id/editBoardUserName"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/textview_outline"
                 android:ems="10"
                 android:fontFamily="@font/cafe_24_air"
-                android:hint="userName"
+                android:hint="User ID"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColor="#191817"
-                android:textColorHint="#191817"
+                android:textColorHint="#777777"
                 android:textColorLink="#79AC78" />
 
             <EditText
@@ -71,7 +82,7 @@
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="#191817"
-                android:textColorHint="#191817"
+                android:textColorHint="#777777"
                 android:textColorLink="#79AC78" />
 
         </LinearLayout>
@@ -88,11 +99,11 @@
             android:background="@drawable/textview_outline"
             android:ems="10"
             android:fontFamily="@font/cafe_24_air"
-            android:hint="title"
+            android:hint="제목을 입력하세요"
             android:inputType="text"
             android:padding="10dp"
             android:textColor="#191817"
-            android:textColorHint="#191817"
+            android:textColorHint="#777777"
             android:textColorLink="#79AC78" />
 
         <EditText
@@ -107,11 +118,11 @@
             android:background="@drawable/textview_outline"
             android:ems="10"
             android:fontFamily="@font/cafe_24_air"
-            android:hint="내용을 입력하세요."
+            android:hint="내용을 입력하세요"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:textColor="#191817"
-            android:textColorHint="#191817"
+            android:textColorHint="#777777"
             android:textColorLink="#79AC78" />
 
         <ImageView
@@ -122,7 +133,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/transparency" />
 
 
         <LinearLayout

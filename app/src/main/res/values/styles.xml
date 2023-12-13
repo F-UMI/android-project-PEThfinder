@@ -17,4 +17,9 @@
         <item name="android:textAlignment">gravity</item>
         <item name="android:minHeight">0dp</item>
     </style>
+
+    <style name="SpinnerTheme" >
+        <item name="android:fontFamily">@font/cafe_24_air</item>
+        <item name="android:textSize">2dp</item>
+    </style>
 </resources>

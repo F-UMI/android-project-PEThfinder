@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +52,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         private TextView titleTv;
         private TextView userNameTv;
         private TextView dateTv;
+        private ImageView class_icon;
         private int position;
 
         public Holder(View itemView) {
@@ -58,6 +60,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
             titleTv = itemView.findViewById(R.id.itemTitle);
             userNameTv = itemView.findViewById(R.id.itemUserName);
             dateTv = itemView.findViewById(R.id.itemDate);
+            class_icon = itemView.findViewById(R.id.class_icon);
             itemView.setClickable(true);
             itemView.setOnClickListener(view -> {
                 position = getAdapterPosition();
@@ -70,6 +73,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
                     intent.putExtra("text", boardDtoList.get(position).getText());
                     intent.putExtra("date", boardDtoList.get(position).getDate());
                     intent.putExtra("imagePath", boardDtoList.get(position).getImagePath());
+                    intent.putExtra("classification", boardDtoList.get(position).getClassification());
                     intent.putExtra("position", position);
                     context.startActivity(intent);
                 }
@@ -78,6 +82,11 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         }
 
         public void bind(BoardDto boardDto) {
+            if (boardDto.getClassification().equals("정보")) {
+                class_icon.setImageResource(R.drawable.info_icon);
+            } else {
+                class_icon.setImageResource(R.drawable.star_icon);
+            }
             titleTv.setText(boardDto.getTitle());
             userNameTv.setText(boardDto.getUserName());
             dateTv.setText(boardDto.getDate());
