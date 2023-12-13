@@ -37,7 +37,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_internet"
+            app:layout_constraintEnd_toStartOf="@+id/textView_textView_socialMediaURL"
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.761"
+            app:layout_constraintVertical_bias="0.75"
             app:srcCompat="@drawable/clock_logo" />
 
         <ImageView
@@ -74,11 +74,11 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_WeekendOpenTime"
+            app:layout_constraintEnd_toStartOf="@+id/textView_Constraints"
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.834"
+            app:layout_constraintVertical_bias="0.833"
             app:srcCompat="@drawable/cat_and_dog_logo" />
 
         <ImageView
@@ -179,10 +179,9 @@
 
         <TextView
             android:id="@+id/textView_WeekdayOpenTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="80dp"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
             android:text="오픈 시간 (주중)"
@@ -190,38 +189,38 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.898" />
+            app:layout_constraintVertical_bias="0.768" />
 
         <TextView
-            android:id="@+id/textView_WeekendOpenTime"
+            android:id="@+id/textView_Constraints"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginBottom="50dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
-            android:text="오픈 시간 (주말)"
+            android:text="반려동물 정보"
             android:textColor="#79AC78"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.923" />
+            app:layout_constraintVertical_bias="0.958" />
 
         <TextView
-            android:id="@+id/textView_internet"
+            android:id="@+id/textView_textView_socialMediaURL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginBottom="45dp"
             android:fontFamily="@font/cafe_24_air"
             android:gravity="left"
-            android:text="오픈 시간 (주말)"
+            android:text="Instagram"
             android:textColor="#79AC78"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"

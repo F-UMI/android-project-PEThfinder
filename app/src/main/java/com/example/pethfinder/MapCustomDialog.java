@@ -1,16 +1,22 @@
 package com.example.pethfinder;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
+import android.net.Uri;
+import android.text.util.Linkify;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * 가게명 : content[0]
@@ -29,7 +35,10 @@ public class MapCustomDialog extends Dialog {
     private TextView addressTextView;
     private TextView phoneNumberTextView;
     private TextView weekdayOpenTimeTextView;
-    private TextView weekendOpenTimeTextView;
+    private TextView textView_Constraints;
+    private TextView textView_socialMediaURL;
+
+    String instaURL;
 
 
     public MapCustomDialog(@NonNull Context context, String[] content, String marketId) {
@@ -39,11 +48,9 @@ public class MapCustomDialog extends Dialog {
         String storeName = getContent(content, 0);
         String address = getContent(content, 14);
         String phoneNumber = getContent(content, 16);
-        String weekdayOpenTime = getContent(content, 17);
-        String weekendOpenTime = getContent(content, 18);
-//        String instaURL = getContent(content, 28);
-//        String petTypeDetails = getContent(content, 29);
-//        String petAgeDetails = getContent(content, 30);
+        String openTime = getContent(content, 17) + System.lineSeparator() + getContent(content, 18);
+        instaURL = getContent(content, 28);
+        String petTypeDetails = getContent(content, 29) + System.lineSeparator() + getContent(content, 30);
 
         textView = findViewById(R.id.textView);
         imageView = findViewById(R.id.imageView_market);
@@ -53,7 +60,8 @@ public class MapCustomDialog extends Dialog {
         addressTextView = findViewById(R.id.textView_address);
         phoneNumberTextView = findViewById(R.id.textView_Number);
         weekdayOpenTimeTextView = findViewById(R.id.textView_WeekdayOpenTime);
-        weekendOpenTimeTextView = findViewById(R.id.textView_WeekendOpenTime);
+        textView_Constraints = findViewById(R.id.textView_Constraints);
+        textView_socialMediaURL = findViewById(R.id.textView_textView_socialMediaURL);
 
         imageView.setOnClickListener(view -> showFullScreenImageDialog(imageView));
         imageView1.setOnClickListener(view -> showFullScreenImageDialog(imageView1));
@@ -61,13 +69,34 @@ public class MapCustomDialog extends Dialog {
         textView.setText(marketId);
 
         storeTextView.setText(storeName);
-        addressTextView.setText( address);
+        addressTextView.setText(address);
         phoneNumberTextView.setText(phoneNumber);
-        weekdayOpenTimeTextView.setText(weekdayOpenTime);
-        weekendOpenTimeTextView.setText(weekendOpenTime);
+        weekdayOpenTimeTextView.setText(openTime);
+        textView_Constraints.setText(petTypeDetails);
+
+        Linkify.TransformFilter transformFilter = (matcher, s) -> "";
+        Pattern uriPattern = Pattern.compile("Instagram");
+        Linkify.addLinks(textView_socialMediaURL, uriPattern, instaURL, null, transformFilter);
+
+
         setImage(imageView, marketId, 1);
         setImage(imageView1, marketId, 2);
         setImage(imageView2, marketId, 3);
+    }
+
+    private void openInstagramProfile() {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+
+        // Set the data URI for the Instagram profilea
+        intent.setData(Uri.parse(instaURL));
+
+        // Check if there's an app to handle the Intent
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            // Start the activity
+            getContext().startActivity(intent);
+        } else {
+        }
     }
 
     private String getContent(String[] content, int i) {
