@@ -160,7 +160,7 @@
                 android:id="@+id/updateBoardBtn"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="0dp"
                 android:layout_weight="1"
                 android:backgroundTint="#79AC78"
                 android:fontFamily="@font/cafe_24_air"
