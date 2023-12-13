@@ -36,16 +36,14 @@ public class MapCustomDialog extends Dialog {
         super(context);
         setContentView(R.layout.popup_board);
 
-//        String storeName = content[0];
-//        String address = content[14];
-//        String phoneNumber = content[16];
-//        String weekdayOpenTime = content[17];
-//        String weekendOpenTime = content[18];
         String storeName = getContent(content, 0);
         String address = getContent(content, 14);
         String phoneNumber = getContent(content, 16);
         String weekdayOpenTime = getContent(content, 17);
         String weekendOpenTime = getContent(content, 18);
+//        String instaURL = getContent(content, 28);
+//        String petTypeDetails = getContent(content, 29);
+//        String petAgeDetails = getContent(content, 30);
 
         textView = findViewById(R.id.textView);
         imageView = findViewById(R.id.imageView_market);

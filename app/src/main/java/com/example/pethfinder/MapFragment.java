@@ -149,34 +149,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
     };
 
-//    GoogleMap.OnMarkerClickListener markerClickListener = new GoogleMap.OnMarkerClickListener() {
-//        @Override
-//        public boolean onMarkerClick(@NonNull Marker marker) {
-//            for (int i = 0; i < csvData.size(); i++) {
-//                String[] content = csvData.get(i);
-//
-//                String storeName = content[0];
-//                double storeLongitude = Double.parseDouble(content[11]);
-//                double storeLatitude = Double.parseDouble(content[12]);
-//
-//                String markerTitle = marker.getTitle();
-//                LatLng markerPosition = marker.getPosition();
-//                double markerLongitude = markerPosition.longitude;
-//                double markerLatitude = markerPosition.latitude;
-//
-//                if (storeName.equals(markerTitle) &&
-//                        storeLongitude == markerLongitude &&
-//                        storeLatitude == markerLatitude) {
-//                    customDialog = new CustomDialog(mapFragment.this.requireActivity(), content);
-//                    customDialog.show();
-//                    return true;
-//                }
-//            }
-//            return false;
-//        }
-//    };
-
-
     private List<String[]> loadData() throws IOException, CsvException {
         AssetManager assetManager = this.getActivity().getAssets();
         InputStream inputStream = assetManager.open("PET_POSBL_DATA.csv");
