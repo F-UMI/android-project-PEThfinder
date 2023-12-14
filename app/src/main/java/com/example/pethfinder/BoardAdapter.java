@@ -39,15 +39,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.Holder> {
         holder.bind(boardDtoList.get(position));
     }
 
-/*
-    public void delete(int position) {
-        boardList.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position,boardList.size());
-
-    }
-*/
-
     public class Holder extends RecyclerView.ViewHolder {
         private TextView titleTv;
         private TextView userNameTv;

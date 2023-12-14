@@ -136,7 +136,6 @@ public class BoardViewActivity extends AppCompatActivity {
         final EditText passwordInput = dialogView.findViewById(R.id.passwordInput);
 
         builder.setPositiveButton("인증", (dialog, which) -> {
-            // Check if the entered password is correct (you should replace "your_password" with the actual correct password)
             String enteredPassword = passwordInput.getText().toString();
             if (enteredPassword.equals(boardDtoList.get(position).getPassword())) {
                 if (query.equals("update")) {

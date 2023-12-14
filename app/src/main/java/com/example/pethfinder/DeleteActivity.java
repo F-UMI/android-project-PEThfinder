@@ -15,14 +15,14 @@ public class DeleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
 
-        timer = new Thread(){
+        timer = new Thread() {
             @Override
             public void run() {
                 try {
-                    synchronized (this){
+                    synchronized (this) {
                         wait(1500);
                     }
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     Intent i = new Intent(DeleteActivity.this, MainActivity.class);

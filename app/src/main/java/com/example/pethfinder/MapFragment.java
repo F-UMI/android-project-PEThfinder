@@ -132,8 +132,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             for (int i = 0; i < csvData.size(); i++) {
                 String[] content = csvData.get(i);
                 if (storeNames.size() > i) {
-                    //String storeName = storeNames.get(i);
-                    //if (storeName.equals(marker.getTitle())) {
                     String storeLatitude = storeLatitudes.get(i);
                     String storeLongitude = storeLongitudes.get(i);
                     if (storeLatitude.equals(String.valueOf(marker.getPosition().latitude))&&

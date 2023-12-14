@@ -14,14 +14,14 @@ public class AppSplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        timer = new Thread(){
+        timer = new Thread() {
             @Override
             public void run() {
                 try {
-                    synchronized (this){
+                    synchronized (this) {
                         wait(5000);
                     }
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     Intent i = new Intent(AppSplashActivity.this, MainActivity.class);

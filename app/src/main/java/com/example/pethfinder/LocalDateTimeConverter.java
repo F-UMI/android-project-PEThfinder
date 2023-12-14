@@ -11,9 +11,9 @@ public class LocalDateTimeConverter {
     @TypeConverter
     public static LocalDateTime toDate(Long timestamp) {
         LocalDateTime ldt;
-        if (timestamp == null){
+        if (timestamp == null) {
             return null;
-        }else{
+        } else {
             ldt = Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault()).toLocalDateTime();
         }
         return ldt;
@@ -21,9 +21,10 @@ public class LocalDateTimeConverter {
 
     @TypeConverter
     public static Long toTimestamp(LocalDateTime date) {
-        if (date == null){
-            return  null;
-        }else {
+        if (date == null) {
+            return null;
+        } else {
             return date.getLong(ChronoField.CLOCK_HOUR_OF_DAY);
         }
-    }}
+    }
+}

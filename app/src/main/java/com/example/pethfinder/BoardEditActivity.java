@@ -134,7 +134,6 @@ public class BoardEditActivity extends AppCompatActivity {
             }).start();
 
             Intent i = new Intent(this, LoadingCompletedActivity.class);
-            /*            i.putExtra("FRAGMENT_TO_LOAD", "BoardFragment");*/
             startActivity(i);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.putExtra("id", boardDtoList.get(position).getId());
@@ -188,8 +187,6 @@ public class BoardEditActivity extends AppCompatActivity {
     }
 
     private Bitmap convertUriToBitmap(Uri uri) {
-        // Convert the URI to a bitmap (you may want to use a library like Glide or Picasso)
-        // For simplicity, you can use BitmapFactory
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
             return BitmapFactory.decodeStream(inputStream);

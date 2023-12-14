@@ -157,8 +157,6 @@ public class BoardAddActivity extends AppCompatActivity {
     }
 
     private Bitmap convertUriToBitmap(Uri uri) {
-        // Convert the URI to a bitmap (you may want to use a library like Glide or Picasso)
-        // For simplicity, you can use BitmapFactory
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
             return BitmapFactory.decodeStream(inputStream);
@@ -169,7 +167,6 @@ public class BoardAddActivity extends AppCompatActivity {
     }
 
     private void displaySelectedImage(Bitmap imageBitmap) {
-        // Set the selected image to the ImageView
         addImage.setImageBitmap(imageBitmap);
     }
 

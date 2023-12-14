@@ -88,12 +88,9 @@ public class MapCustomDialog extends Dialog {
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
 
-        // Set the data URI for the Instagram profilea
         intent.setData(Uri.parse(instaURL));
 
-        // Check if there's an app to handle the Intent
         if (intent.resolveActivity(getContext().getPackageManager()) != null) {
-            // Start the activity
             getContext().startActivity(intent);
         } else {
         }
